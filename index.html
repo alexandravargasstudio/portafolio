@@ -1,1848 +1,1934 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Editor de Video Portfolio - Alexandra Vargas</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        /* ESTILOS CSS */
-        :root {
-            --morado: #A14FE3;
-            --azul: #2A2BDF;
-            --purpura-oscuro: #3B1F7C;
-            --rosado: #F57DD6;
-            --verde-agua: #95F1E3;
-            --blanco: #FFFFFF;
-            --fondo: #1C1C1E;
-            --fondo-claro: #2C2C2E;
-            --texto: #E5E5E5;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--fondo);
-            color: var(--texto);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Preloader */
-        .preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--fondo);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-
-        .preloader.fade-out {
-            opacity: 0;
-        }
-
-        .preloader-content {
-            text-align: center;
-        }
-
-        .preloader-spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid var(--morado);
-            border-top-color: transparent;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        .preloader h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            color: var(--blanco);
-            margin-top: 20px;
-            letter-spacing: 2px;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Efecto de partículas */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-
-        /* Animación de ondas de color */
-        .wave-container {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--morado), var(--azul), var(--rosado), var(--verde-agua));
-            opacity: 0.1;
-            animation: wave 15s linear infinite;
-        }
-
-        @keyframes wave {
-            0% {
-                transform: translateX(0) translateZ(0) scaleY(1);
-            }
-
-            50% {
-                transform: translateX(-25%) translateZ(0) scaleY(0.7);
-            }
-
-            100% {
-                transform: translateX(-50%) translateZ(0) scaleY(1);
-            }
-        }
-
-        /* Elementos flotantes */
-        .floating-elements {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .floating-element {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.2;
-            animation: float 15s infinite linear;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-
-            100% {
-                transform: translateY(-1000px) rotate(720deg);
-            }
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.5rem;
-            color: var(--blanco);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--morado), var(--azul));
-            margin: 15px auto;
-            border-radius: 2px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 40px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-align: center;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.3rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background-color: var(--morado);
-            color: var(--blanco);
-            border: 2px solid var(--morado);
-            box-shadow: 0 0 10px rgba(161, 79, 227, 0.5);
-        }
-
-        .btn-primary:hover {
-            background-color: transparent;
-            color: var(--morado);
-            box-shadow: 0 0 20px rgba(161, 79, 227, 0.8);
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .btn-primary:hover::before {
-            left: 100%;
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--blanco);
-            border: 2px solid var(--blanco);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--blanco);
-            color: var(--fondo);
-        }
-
-        /* Header */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: rgba(28, 28, 30, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
-            transition: all 0.3s ease;
-        }
-
-        .header.scrolled {
-            padding: 15px 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            font-family: 'Bebas Neue', sans-serif;
-            color: var(--blanco);
-            text-decoration: none;
-            background: linear-gradient(to right, var(--morado), var(--azul));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav li {
-            margin-left: 30px;
-        }
-
-        .nav-link {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.3rem;
-            letter-spacing: 1px;
-            color: var(--texto);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: var(--morado);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--morado);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        .header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            color: var(--blanco);
-            text-align: center;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h2 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 12rem;
-            letter-spacing: 13px;
-            line-height: 1;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, var(--morado), var(--azul));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero p {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 5.5rem;
-            letter-spacing: 15px;
-            margin-top: 0;
-            margin-bottom: 30px;
-            color: var(--blanco);
-        }
-
-        /* About Section */
-        .about {
-            background-color: var(--fondo-claro);
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .about-img {
-            flex: 1;
-        }
-
-        .about-img img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--morado);
-        }
-
-        .about-text p {
-            margin-bottom: 15px;
-        }
-
-        .social-links {
-            margin-top: 30px;
-        }
-
-        .social-links a {
-            display: inline-block;
-            margin-right: 15px;
-            color: var(--texto);
-            font-size: 2rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--morado);
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .skill-item {
-            background-color: var(--fondo-claro);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            transition: all 0.5s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(161, 79, 227, 0.3);
-        }
-
-        /* Efecto de brillo al pasar el cursor */
-        .skill-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.1),
-                    transparent);
-            transition: 0.5s;
-        }
-
-        .skill-item:hover::before {
-            left: 100%;
-        }
-
-        .skill-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--morado);
-        }
-
-        .skill-bar {
-            width: 100%;
-            height: 10px;
-            background-color: var(--fondo);
-            border-radius: 5px;
-            margin: 15px 0;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .skill-level {
-            height: 100%;
-            border-radius: 5px;
-            position: relative;
-            width: 0;
-            /* Inicialmente en 0 */
-            transition: width 2s ease-in-out;
-        }
-
-        /* Punto en el extremo de la barra */
-        .skill-level::after {
-            content: '';
-            position: absolute;
-            right: -5px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: var(--blanco);
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-        }
-
-        .skill-item span {
-            font-weight: 600;
-            display: inline-block;
-            margin-top: 5px;
-        }
-
-        /* Projects Section - NUEVO DISEÑO MEJORADO */
-        .projects-section {
-            margin-bottom: 80px;
-        }
-
-        .projects-section-title {
-            font-size: 2rem;
-            color: var(--morado);
-            margin-bottom: 30px;
-            text-align: center;
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 2px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .projects-section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(to right, var(--morado), var(--azul));
-            border-radius: 3px;
-        }
-
+      /* ESTILOS CSS */
+      :root {
+        --morado: #a14fe3;
+        --azul: #2a2bdf;
+        --purpura-oscuro: #3b1f7c;
+        --rosado: #f57dd6;
+        --verde-agua: #95f1e3;
+        --blanco: #ffffff;
+        --fondo: #1c1c1e;
+        --fondo-claro: #2c2c2e;
+        --texto: #e5e5e5;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: var(--fondo);
+        color: var(--texto);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Preloader */
+      .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--fondo);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+      }
+
+      .preloader.fade-out {
+        opacity: 0;
+      }
+
+      .preloader-content {
+        text-align: center;
+      }
+
+      .preloader-spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid var(--morado);
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 20px;
+      }
+
+      .preloader h3 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 2rem;
+        color: var(--blanco);
+        margin-top: 20px;
+        letter-spacing: 2px;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Efecto de partículas */
+      #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+
+      /* Animación de ondas de color */
+      .wave-container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--morado),
+          var(--azul),
+          var(--rosado),
+          var(--verde-agua)
+        );
+        opacity: 0.1;
+        animation: wave 15s linear infinite;
+      }
+
+      @keyframes wave {
+        0% {
+          transform: translateX(0) translateZ(0) scaleY(1);
+        }
+
+        50% {
+          transform: translateX(-25%) translateZ(0) scaleY(0.7);
+        }
+
+        100% {
+          transform: translateX(-50%) translateZ(0) scaleY(1);
+        }
+      }
+
+      /* Elementos flotantes */
+      .floating-elements {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .floating-element {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(60px);
+        opacity: 0.2;
+        animation: float 15s infinite linear;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0) rotate(0deg);
+        }
+
+        100% {
+          transform: translateY(-1000px) rotate(720deg);
+        }
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      section {
+        padding: 80px 0;
+        position: relative;
+        z-index: 1;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 2.5rem;
+        color: var(--blanco);
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(to right, var(--morado), var(--azul));
+        margin: 15px auto;
+        border-radius: 2px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 15px 40px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-align: center;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background-color: var(--morado);
+        color: var(--blanco);
+        border: 2px solid var(--morado);
+        box-shadow: 0 0 10px rgba(161, 79, 227, 0.5);
+      }
+
+      .btn-primary:hover {
+        background-color: transparent;
+        color: var(--morado);
+        box-shadow: 0 0 20px rgba(161, 79, 227, 0.8);
+      }
+
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        color: var(--blanco);
+        border: 2px solid var(--blanco);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--blanco);
+        color: var(--fondo);
+      }
+
+      /* Header */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: rgba(28, 28, 30, 0.9);
+        backdrop-filter: blur(10px);
+        padding: 20px 0;
+        transition: all 0.3s ease;
+      }
+
+      .header.scrolled {
+        padding: 15px 0;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        font-family: "Bebas Neue", sans-serif;
+        color: var(--blanco);
+        text-decoration: none;
+        background: linear-gradient(to right, var(--morado), var(--azul));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav li {
+        margin-left: 30px;
+      }
+
+      .nav-link {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+        color: var(--texto);
+        text-decoration: none;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--morado);
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--morado);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      .header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        color: var(--blanco);
+        text-align: center;
+        position: relative;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero h2 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 12rem;
+        letter-spacing: 13px;
+        line-height: 1;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        background: linear-gradient(to right, var(--morado), var(--azul));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero p {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 5.5rem;
+        letter-spacing: 15px;
+        margin-top: 0;
+        margin-bottom: 30px;
+        color: var(--blanco);
+      }
+
+      /* About Section */
+      .about {
+        background-color: var(--fondo-claro);
+      }
+
+      .about-content {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+      }
+
+      .about-img {
+        flex: 1;
+      }
+
+      .about-img img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-text h3 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: var(--morado);
+      }
+
+      .about-text p {
+        margin-bottom: 15px;
+      }
+
+      .social-links {
+        margin-top: 30px;
+      }
+
+      .social-links a {
+        display: inline-block;
+        margin-right: 15px;
+        color: var(--texto);
+        font-size: 2rem;
+        transition: color 0.3s ease;
+      }
+
+      .social-links a:hover {
+        color: var(--morado);
+      }
+
+      /* Skills Section */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .skill-item {
+        background-color: var(--fondo-claro);
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        transition: all 0.5s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .skill-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(161, 79, 227, 0.3);
+      }
+
+      /* Efecto de brillo al pasar el cursor */
+      .skill-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .skill-item:hover::before {
+        left: 100%;
+      }
+
+      .skill-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: var(--morado);
+      }
+
+      .skill-bar {
+        width: 100%;
+        height: 10px;
+        background-color: var(--fondo);
+        border-radius: 5px;
+        margin: 15px 0;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .skill-level {
+        height: 100%;
+        border-radius: 5px;
+        position: relative;
+        width: 0;
+        /* Inicialmente en 0 */
+        transition: width 2s ease-in-out;
+      }
+
+      /* Punto en el extremo de la barra */
+      .skill-level::after {
+        content: "";
+        position: absolute;
+        right: -5px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--blanco);
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+      }
+
+      .skill-item span {
+        font-weight: 600;
+        display: inline-block;
+        margin-top: 5px;
+      }
+
+      /* Projects Section - NUEVO DISEÑO MEJORADO */
+      .projects-section {
+        margin-bottom: 80px;
+      }
+
+      .projects-section-title {
+        font-size: 2rem;
+        color: var(--morado);
+        margin-bottom: 30px;
+        text-align: center;
+        font-family: "Bebas Neue", sans-serif;
+        letter-spacing: 2px;
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .projects-section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(to right, var(--morado), var(--azul));
+        border-radius: 3px;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+        padding: 20px 0;
+      }
+
+      @media (min-width: 1200px) {
         .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            padding: 20px 0;
+          grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
         }
+      }
 
-        @media (min-width: 1200px) {
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            }
-        }
+      .project-item {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        background: var(--fondo-claro);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
 
-        .project-item {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            background: var(--fondo-claro);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
+      .project-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(161, 79, 227, 0.3);
+      }
 
-        .project-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(161, 79, 227, 0.3);
-        }
+      /* Vertical Videos (9:16 aspect ratio) */
+      .vertical-video {
+        aspect-ratio: 9/16;
+        max-width: 400px;
+        /*limitar el ancho */
+        margin: 0 auto;
+        /* Centrar las cajas */
+      }
 
-        /* Vertical Videos (9:16 aspect ratio) */
-        .vertical-video {
-            aspect-ratio: 9/16;
-            max-width: 400px;
-            /*limitar el ancho */
-            margin: 0 auto;
-            /* Centrar las cajas */
-        }
+      /* Horizontal Videos (16:9 aspect ratio) */
+      .horizontal-video {
+        aspect-ratio: 16/9;
+      }
 
-        /* Horizontal Videos (16:9 aspect ratio) */
-        .horizontal-video {
-            aspect-ratio: 16/9;
-        }
+      /* Motion Graphics (16:9 aspect ratio) */
+      .motion-video {
+        aspect-ratio: 16/9;
+      }
 
-        /* Motion Graphics (16:9 aspect ratio) */
-        .motion-video {
-            aspect-ratio: 16/9;
-        }
+      /* 3D Images (square aspect ratio) */
+      .modeling-image {
+        aspect-ratio: 1/1;
+      }
 
-        /* 3D Images (square aspect ratio) */
-        .modeling-image {
-            aspect-ratio: 1/1;
-        }
+      .project-item img,
+      .project-item video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
 
-        .project-item img,
-        .project-item video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+      .video-thumbnail {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
 
-        .video-thumbnail {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
+      .video-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
 
-        .video-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+      .play-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 3rem;
+        opacity: 0.8;
+        transition: all 0.3s;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
 
-        .play-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 3rem;
-            opacity: 0.8;
-            transition: all 0.3s;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
+      .project-item:hover .play-icon {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
 
-        .project-item:hover .play-icon {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1.1);
-        }
+      .project-item-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: linear-gradient(
+          to top,
+          rgba(59, 31, 124, 0.9),
+          transparent
+        );
+        color: white;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
 
-        .project-item-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(to top, rgba(59, 31, 124, 0.9), transparent);
-            color: white;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+      .project-item:hover .project-item-overlay {
+        opacity: 1;
+      }
 
-        .project-item:hover .project-item-overlay {
-            opacity: 1;
-        }
+      .project-item-title {
+        font-size: 1.5rem;
+        color: var(--blanco);
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
 
-        .project-item-title {
-            font-size: 1.5rem;
-            color: var(--blanco);
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
+      .project-item-desc {
+        color: var(--texto);
+        font-size: 0.9rem;
+      }
 
-        .project-item-desc {
-            color: var(--texto);
-            font-size: 0.9rem;
-        }
+      /* Contact Section */
+      .contact-content {
+        display: flex;
+        gap: 50px;
+      }
 
-        /* Contact Section */
-        .contact-content {
-            display: flex;
-            gap: 50px;
-        }
+      .contact-info,
+      .contact-form {
+        flex: 1;
+      }
 
-        .contact-info,
-        .contact-form {
-            flex: 1;
-        }
+      .contact-info h3 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        color: var(--morado);
+      }
 
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            color: var(--morado);
-        }
+      .contact-info p {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+      }
 
-        .contact-info p {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
+      .contact-info i {
+        margin-right: 15px;
+        color: var(--morado);
+        font-size: 1.5rem;
+        width: 25px;
+        text-align: center;
+      }
 
-        .contact-info i {
-            margin-right: 15px;
-            color: var(--morado);
-            font-size: 1.5rem;
-            width: 25px;
-            text-align: center;
-        }
+      .contact-social {
+        margin-top: 40px;
+      }
 
-        .contact-social {
-            margin-top: 40px;
-        }
+      .contact-social a {
+        display: inline-block;
+        margin-right: 15px;
+        color: var(--texto);
+        font-size: 2rem;
+        transition: color 0.3s ease;
+      }
 
-        .contact-social a {
-            display: inline-block;
-            margin-right: 15px;
-            color: var(--texto);
-            font-size: 2rem;
-            transition: color 0.3s ease;
-        }
+      .contact-social a i {
+        font-size: 2rem !important;
+        margin-right: 25px;
+      }
 
-        .contact-social a i {
-            font-size: 2rem !important;
-            margin-right: 25px;
-        }
+      .contact-social a:hover {
+        color: var(--morado);
+      }
 
-        .contact-social a:hover {
-            color: var(--morado);
-        }
+      .form-group {
+        margin-bottom: 20px;
+      }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 15px;
+        background-color: var(--fondo-claro);
+        border: 1px solid var(--purpura-oscuro);
+        border-radius: 5px;
+        color: var(--texto);
+        font-family: inherit;
+        transition: border-color 0.3s ease;
+      }
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            background-color: var(--fondo-claro);
-            border: 1px solid var(--purpura-oscuro);
-            border-radius: 5px;
-            color: var(--texto);
-            font-family: inherit;
-            transition: border-color 0.3s ease;
-        }
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--morado);
+      }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--morado);
-        }
+      .form-group textarea {
+        height: 150px;
+        resize: vertical;
+      }
 
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
-        }
+      /* Footer */
+      .footer {
+        background-color: var(--fondo-claro);
+        padding: 60px 0 20px;
+      }
 
-        /* Footer */
-        .footer {
-            background-color: var(--fondo-claro);
-            padding: 60px 0 20px;
-        }
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
+      .footer-logo h3 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        background: linear-gradient(to right, var(--morado), var(--azul));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
 
-        .footer-logo h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            background: linear-gradient(to right, var(--morado), var(--azul));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
+      .footer-links h4,
+      .footer-social h4 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        color: var(--blanco);
+      }
 
-        .footer-links h4,
-        .footer-social h4 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: var(--blanco);
-        }
+      .footer-links ul {
+        list-style: none;
+      }
 
-        .footer-links ul {
-            list-style: none;
-        }
+      .footer-links li {
+        margin-bottom: 10px;
+      }
 
-        .footer-links li {
-            margin-bottom: 10px;
-        }
+      .footer-links a {
+        color: var(--texto);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
 
-        .footer-links a {
-            color: var(--texto);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+      .footer-links a:hover {
+        color: var(--morado);
+      }
 
-        .footer-links a:hover {
-            color: var(--morado);
-        }
+      .social-icons {
+        display: flex;
+        gap: 15px;
+      }
 
-        .social-icons {
-            display: flex;
-            gap: 15px;
-        }
+      .social-icons a {
+        color: var(--texto);
+        font-size: 2rem;
+        transition: color 0.3s ease;
+      }
 
-        .social-icons a {
-            color: var(--texto);
-            font-size: 2rem;
-            transition: color 0.3s ease;
-        }
+      .social-icons a:hover {
+        color: var(--morado);
+      }
 
-        .social-icons a:hover {
-            color: var(--morado);
-        }
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
+      /* Video Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+      }
 
-        /* Video Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
+      .modal-content {
+        width: 80%;
+        max-width: 1000px;
+        position: relative;
+      }
+
+      .modal-video {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background-color: #000;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .close-modal:hover {
+        color: var(--morado);
+      }
+
+      /* Lightbox para imágenes */
+      .lightbox-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 2000;
+        display: none;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .lightbox-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+      }
+
+      .lightbox-image {
+        max-width: 100%;
+        max-height: 80vh;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .lightbox-close:hover {
+        color: var(--morado);
+      }
+
+      .lightbox-caption {
+        color: white;
+        text-align: center;
+        margin-top: 15px;
+        font-size: 1.2rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .hero h2 {
+          font-size: 4rem;
         }
 
         .modal-content {
-            width: 80%;
-            max-width: 1000px;
-            position: relative;
+          width: 90%;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .about-content,
+        .contact-content {
+          flex-direction: column;
         }
 
-        .modal-video {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background-color: #000;
+        .about-img,
+        .about-text,
+        .contact-info,
+        .contact-form {
+          width: 100%;
         }
 
-        .modal-video video {
-            width: 100%;
-            height: 100%;
-            display: block;
+        .hero h2 {
+          font-size: 3.5rem;
+        }
+
+        .hero p {
+          font-size: 1.5rem;
+        }
+
+        .projects-grid {
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav ul {
+          display: none;
+        }
+
+        .hero h2 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        section {
+          padding: 60px 0;
+        }
+
+        .modal-content {
+          width: 95%;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero h2 {
+          font-size: 2rem;
+          letter-spacing: 3px;
+        }
+
+        .hero p {
+          font-size: 1rem;
         }
 
         .close-modal {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: color 0.3s;
+          top: -30px;
+          font-size: 1.5rem;
         }
 
-        .close-modal:hover {
-            color: var(--morado);
+        .projects-section-title {
+          font-size: 1.5rem;
         }
-
-        /* Lightbox para imágenes */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .lightbox-image {
-            max-width: 100%;
-            max-height: 80vh;
-            display: block;
-            margin: 0 auto;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .lightbox-close:hover {
-            color: var(--morado);
-        }
-
-        .lightbox-caption {
-            color: white;
-            text-align: center;
-            margin-top: 15px;
-            font-size: 1.2rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .hero h2 {
-                font-size: 4rem;
-            }
-
-            .modal-content {
-                width: 90%;
-            }
-        }
-
-        @media (max-width: 992px) {
-
-            .about-content,
-            .contact-content {
-                flex-direction: column;
-            }
-
-            .about-img,
-            .about-text,
-            .contact-info,
-            .contact-form {
-                width: 100%;
-            }
-
-            .hero h2 {
-                font-size: 3.5rem;
-            }
-
-            .hero p {
-                font-size: 1.5rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav ul {
-                display: none;
-            }
-
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            section {
-                padding: 60px 0;
-            }
-
-            .modal-content {
-                width: 95%;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero h2 {
-                font-size: 2rem;
-                letter-spacing: 3px;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .close-modal {
-                top: -30px;
-                font-size: 1.5rem;
-            }
-
-            .projects-section-title {
-                font-size: 1.5rem;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Preloader -->
     <div class="preloader">
-        <div class="preloader-content">
-            <div class="preloader-spinner"></div>
-            <h3>CARGANDO PORTAFOLIO</h3>
-        </div>
+      <div class="preloader-content">
+        <div class="preloader-spinner"></div>
+        <h3>CARGANDO PORTAFOLIO</h3>
+      </div>
     </div>
 
     <!-- Efectos de fondo -->
     <div id="particles-js"></div>
     <div class="wave-container">
-        <div class="wave"></div>
+      <div class="wave"></div>
     </div>
     <div class="floating-elements"></div>
 
-    <!-- Video Modal -->
+    <!-- Video Modal para YouTube -->
     <div class="modal" id="videoModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-video">
-                <video controls id="modalVideo">
-                    <source src="" type="video/mp4">
-                    Tu navegador no soporta el elemento de video.
-                </video>
-            </div>
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-video">
+          <iframe
+            id="youtubeVideo"
+            width="100%"
+            height="100%"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
         </div>
+      </div>
     </div>
 
     <!-- Lightbox para imágenes -->
     <div class="lightbox-overlay" id="imageLightbox">
-        <div class="lightbox-content">
-            <span class="lightbox-close">&times;</span>
-            <img class="lightbox-image" id="lightboxImage" src="" alt="">
-            <div class="lightbox-caption" id="lightboxCaption"></div>
-        </div>
+      <div class="lightbox-content">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-image" id="lightboxImage" src="" alt="" />
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+      </div>
     </div>
 
     <header class="header">
-        <div class="container">
-            <h1 class="logo">Alexandra Vargas</h1>
-            <nav class="nav">
-                <ul>
-                    <li><a href="#inicio" class="nav-link active">Inicio</a></li>
-                    <li><a href="#sobre-mi" class="nav-link">Sobre Mí</a></li>
-                    <li><a href="#skills" class="nav-link">Skills</a></li>
-                    <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
-                    <li><a href="#Contacto" class="nav-link">Contacto</a></li>
-                </ul>
-            </nav>
-        </div>
+      <div class="container">
+        <h1 class="logo">Alexandra Vargas</h1>
+        <nav class="nav">
+          <ul>
+            <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+            <li><a href="#sobre-mi" class="nav-link">Sobre Mí</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+            <li><a href="#Contacto" class="nav-link">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <main>
-        <!-- Sección Inicio-->
-        <section id="inicio" class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h2>PORTAFOLIO<br></h2>
-                    <p>EDITORA DE VIDEO</p>
-                    <a href="#proyectos" class="btn btn-primary">VER MIS PROYECTOS</a>
-                </div>
+      <!-- Sección Inicio-->
+      <section id="inicio" class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <h2>PORTAFOLIO<br /></h2>
+            <p>EDITORA DE VIDEO</p>
+            <a href="#proyectos" class="btn btn-primary">VER MIS PROYECTOS</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Sobre Mí -->
+      <section id="sobre-mi" class="about">
+        <div class="container">
+          <h2 class="section-title">Sobre Mí</h2>
+          <div class="about-content">
+            <div class="about-img">
+              <img src="img/alex2.png" alt="Alexandra Vargas" />
             </div>
-        </section>
+            <div class="about-text">
+              <h3>¡Hola! Soy Alexandra</h3>
+              <p>
+                Editora de video en formación, con enfoque en edición, motion
+                graphics y storytelling visual. Me apasiona transformar ideas en
+                piezas creativas que conecten con la audiencia. Siempre estoy
+                abierta a nuevos proyectos, colaboraciones y desafíos.
+              </p>
 
-        <!-- Sección Sobre Mí -->
-        <section id="sobre-mi" class="about">
-            <div class="container">
-                <h2 class="section-title">Sobre Mí</h2>
-                <div class="about-content">
-                    <div class="about-img">
-                        <img src="img/alex2.png"Alexandra Vargas">
-                    </div>
-                    <div class="about-text">
-                        <h3>¡Hola! Soy Alexandra</h3>
-                        <p>Editora de video en formación, con enfoque en edición, motion graphics y storytelling
-                            visual. Me apasiona transformar ideas en piezas creativas que conecten con la audiencia.
-                            Siempre estoy abierta a nuevos proyectos, colaboraciones y desafíos.</p>
+              <p>🎓 <strong>Formación:</strong></p>
+              <ul>
+                <li>
+                  Estudiante de Animación Digital en Toulouse Lautrec (sexto
+                  ciclo)
+                </li>
+                <li>Curso de Diseño y Desarrollo Web en IDAT</li>
+                <li>
+                  Curso online de Motion Graphics en IPAD – Instituto Peruano de
+                  Arte y Diseño
+                </li>
+              </ul>
 
-                        <p>🎓 <strong>Formación:</strong></p>
-                        <ul>
-                            <li>Estudiante de Animación Digital en Toulouse Lautrec (sexto ciclo)</li>
-                            <li>Curso de Diseño y Desarrollo Web en IDAT</li>
-                            <li>Curso online de Motion Graphics en IPAD – Instituto Peruano de Arte y Diseño</li>
-                        </ul>
-
-                        <div class="social-links">
-                            <a href="https://www.instagram.com/ale.xayumi/"><i class="fab fa-instagram"></i></a>
-                            <!-- <a href="#"><i class="fab fa-vimeo"></i></a>-->
-                            <a href="https://www.linkedin.com/in/alexandra-vargas-567643276/"><i
-                                    class="fab fa-linkedin"></i></a>
-                            <a href="https://www.youtube.com/channel/UC_qWAfZlGvqGQaLZ1Mxf3ww"><i
-                                    class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                </div>
+              <div class="social-links">
+                <a href="https://www.instagram.com/ale.xayumi/"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a
+                  href="https://www.linkedin.com/in/alexandra-vargas-567643276/"
+                  ><i class="fab fa-linkedin"></i
+                ></a>
+                <a
+                  href="https://www.youtube.com/channel/UC_qWAfZlGvqGQaLZ1Mxf3ww"
+                  ><i class="fab fa-youtube"></i
+                ></a>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- Sección Skills -->
-        <section id="skills" class="skills">
-            <div class="container">
-                <h2 class="section-title">Mis Skills</h2>
-                <div class="skills-grid">
-                    <!-- After Effects -->
-                    <div class="skill-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-film" style="color: #A14FE3; font-size: 2.5rem;"></i>
-                        </div>
-                        <h3>After Effects</h3>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="background-color: #A14FE3;" data-width="95%"></div>
-                        </div>
-                        <span class="skill-percent">0%</span>
-                    </div>
-
-                    <!-- Premiere Pro -->
-                    <div class="skill-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-video" style="color: #2A2BDF; font-size: 2.5rem;"></i>
-                        </div>
-                        <h3>Premiere Pro</h3>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="background-color: #2A2BDF;" data-width="90%"></div>
-                        </div>
-                        <span class="skill-percent">0%</span>
-                    </div>
-
-                    <!-- Photoshop -->
-                    <div class="skill-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-image" style="color: #F57DD6; font-size: 2.5rem;"></i>
-                        </div>
-                        <h3>Photoshop</h3>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="background-color: #F57DD6;" data-width="85%"></div>
-                        </div>
-                        <span class="skill-percent">0%</span>
-                    </div>
-
-                    <!-- Audition -->
-                    <div class="skill-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-volume-up" style="color: #95F1E3; font-size: 2.5rem;"></i>
-                        </div>
-                        <h3>Adobe Audition</h3>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="background-color: #95F1E3;" data-width="88%"></div>
-                        </div>
-                        <span class="skill-percent">0%</span>
-                    </div>
-
-                    <!-- Maya -->
-                    <div class="skill-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-cube" style="color: #A14FE3; font-size: 2.5rem;"></i>
-                        </div>
-                        <h3>Autodesk Maya</h3>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="background-color: #A14FE3;" data-width="80%"></div>
-                        </div>
-                        <span class="skill-percent">0%</span>
-                    </div>
-
-                    <!-- ZBrush -->
-                    <div class="skill-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-paint-brush" style="color: #2A2BDF; font-size: 2.5rem;"></i>
-                        </div>
-                        <h3>ZBrush</h3>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="background-color: #2A2BDF;" data-width="75%"></div>
-                        </div>
-                        <span class="skill-percent">0%</span>
-                    </div>
-                </div>
+      <!-- Sección Skills -->
+      <section id="skills" class="skills">
+        <div class="container">
+          <h2 class="section-title">Mis Skills</h2>
+          <div class="skills-grid">
+            <!-- After Effects -->
+            <div class="skill-item">
+              <div class="skill-icon">
+                <i
+                  class="fas fa-film"
+                  style="color: #a14fe3; font-size: 2.5rem"
+                ></i>
+              </div>
+              <h3>After Effects</h3>
+              <div class="skill-bar">
+                <div
+                  class="skill-level"
+                  style="background-color: #a14fe3"
+                  data-width="95%"
+                ></div>
+              </div>
+              <span class="skill-percent">0%</span>
             </div>
-        </section>
 
-        <!-- Sección Proyectos - NUEVO DISEÑO -->
-        <section id="proyectos" class="projects">
-            <div class="container">
-                <h2 class="section-title">Mis Proyectos</h2>
-
-                <!-- Vertical Videos (6 proyectos) -->
-                <div class="projects-section">
-                    <h3 class="projects-section-title">Vertical Videos</h3>
-                    <div class="projects-grid">
-                        <!-- Vertical Video 1 -->
-                        <div class="project-item vertical-video"
-                            onclick="openVideoModal('video/PROYECTO_FINAL_ALEXANDRA_VARGAS.mp4', 'VELIA')">
-                            <div class="video-thumbnail">
-                                <img src="img/miniatura_velia.png" alt="Miniatura Vertical 1">
-                                <i class="fas fa-play play-icon"></i>
-                            </div>
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">VELIA</h4>
-                                <p class="project-item-desc">Publicidad para marca de ropa</p>
-                            </div>
-                        </div>
-                        <!-- Vertical Video 2 -->
-                        <div class="project-item vertical-video" onclick="openVideoModal('video/senti.mp4', 'SENTI')">
-                            <div class="video-thumbnail">
-                                <img src="img/senti.png" alt="Miniatura Vertical 2">
-                                <i class="fas fa-play play-icon"></i>
-                            </div>
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">SENTI</h4>
-                                <p class="project-item-desc">Publicidad para aplicación</p>
-                            </div>
-                        </div>
-                        <!-- Vertical Video 2 -->
-                        <div class="project-item vertical-video"
-                            onclick="openVideoModal('video/PAPA_JOHNS_ALEXANDRA_VARGAS_GOMEZ.mp4', 'SENTI')">
-                            <div class="video-thumbnail">
-                                <img src="img/papas_miniatura.png" alt="Miniatura Vertical 2">
-                                <i class="fas fa-play play-icon"></i>
-                            </div>
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">PAPA JOHNS</h4>
-                                <p class="project-item-desc">Publicidad de comida para tiktok</p>
-                            </div>
-                        </div>
-                        <!-- Vertical Video 2 -->
-                        <div class="project-item vertical-video"
-                            onclick="openVideoModal('video/BLENDER_ALEXANDRA_VARGAS_GOMEZ.mp4', 'SENTI')">
-                            <div class="video-thumbnail">
-                                <img src="img/blender_miniatura.png" alt="Miniatura Vertical 2">
-                                <i class="fas fa-play play-icon"></i>
-                            </div>
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">BLENDER</h4>
-                                <p class="project-item-desc">Reel para tiktok</p>
-                            </div>
-                        </div>
-
-                        <!-- Vertical Video 2 -->
-                        <div class="project-item vertical-video"
-                            onclick="openVideoModal('video/promociones de invierno_alexandra_vargas.mp4', 'SENTI')">
-                            <div class="video-thumbnail">
-                                <img src="img/PROMOCION_MINIATURA.png" alt="Miniatura Vertical 2">
-                                <i class="fas fa-play play-icon"></i>
-                            </div>
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">WINTER SALE</h4>
-                                <p class="project-item-desc">Reel para tiktok</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Horizontal Videos (6 proyectos) -->
-                <div class="projects-section">
-                    <h3 class="projects-section-title">Horizontal Videos</h3>
-                    <div class="projects-grid">
-                        <!-- Horizontal Video 1 -->
-                        <div class="project-item horizontal-video"
-                            onclick="openVideoModal('video/Training Potenciado por IA_ALEXANDRA_VARGAS.mp4', 'Long Form 1')">
-                            <div class="video-thumbnail">
-                                <img src="img/MINIATURA_TRADING.png" alt="Miniatura Horizontal 1">
-                                <i class="fas fa-play play-icon"></i>
-                            </div>
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">Training Potenciado por IA</h4>
-                                <p class="project-item-desc">Animación motion graphics</p>
-                            </div>
-                        </div>
-                        <!-- Horizontal Video 2 -->
-                        <div class="project-item horizontal-video"
-                            onclick="openVideoModal('video/MONALISA_ALEXANDRA VARGAS_GOMEZ.mp4', 'Long Form 2')">
-                            <div class="video-thumbnail">
-                                <img src="img/mona_lisa_miniatura.jpg" alt="Miniatura Horizontal 2">
-                                <i class="fas fa-play play-icon"></i>
-                            </div>
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">MONALISA</h4>
-                                <p class="project-item-desc">Video lyric</p>
-                            </div>
-                        </div>
-                        <!-- Horizontal Video 3 -->
-                        <div class="project-item horizontal-video"
-                            onclick="openVideoModal('video/SPOT_PUBLICITARIO_ALEXANDRA_VARGAS.mp4', 'Long Form 3')">
-                            <div class="video-thumbnail">
-                                <img src="img/miniatura_spot_pizza.png" alt="Miniatura Horizontal 3">
-                                <i class="fas fa-play play-icon"></i>
-                            </div>
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">LITTLE CESAR</h4>
-                                <p class="project-item-desc">Spot publicitario para tv</p>
-                            </div>
-                        </div>
-                        <!-- Horizontal Video 4 -->
-                        <div class="project-item horizontal-video"
-                            onclick="openVideoModal('video/JOSE_CUERVO_ALEXANDRA_VARGAS_GOMEZ.mp4', 'Long Form 4')">
-                            <div class="video-thumbnail">
-                                <img src="img/jose_cuervo_miniatura.png" alt="Miniatura Horizontal 4">
-                                <i class="fas fa-play play-icon"></i>
-                            </div>
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">JOSE CUERVO</h4>
-                                <p class="project-item-desc">Publicidad</p>
-                            </div>
-                        </div>
-                        <!-- Horizontal Video 4 -->
-                        <div class="project-item horizontal-video"
-                            onclick="openVideoModal('video/Como crear un portafolio_edicion_alexandra_vargas_gomez.mp4', 'Long Form 4')">
-                            <div class="video-thumbnail">
-                                <img src="img/miniatura_consguir_clientes.png" alt="Miniatura Horizontal 4">
-                                <i class="fas fa-play play-icon"></i>
-                            </div>
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">CONSEGUIR CLIENTES</h4>
-                                <p class="project-item-desc">Video para YT</p>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <!-- Motion Graphics (3 proyectos) -->
-                <!--<div class="projects-section">
-                    <h3 class="projects-section-title">Motion Graphics</h3>
-                    <div class="projects-grid">
-                        Motion Graphics 1 -->
-                <!--<div class="project-item motion-video" onclick="openVideoModal('video/VIDEOLYRIC_alexandra_vargas.mp4', 'Video Lyric')">
-                            <div class="video-thumbnail">
-                                <img src="img/mona_lisa_miniatura.jpg" alt="Miniatura Motion 1">
-                                <i class="fas fa-play play-icon"></i>
-                            </div>
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">Video Lyric</h4>
-                                <p class="project-item-desc">Animación para video musical</p>
-                            </div>
-                        </div>
-                         Motion Graphics 2 -->
-                <!--<div class="project-item motion-video" onclick="openVideoModal('video/JOSE_CUERVO_ALEXANDRA_VARGAS_GOMEZ.mp4', 'José Cuervo')">
-                            <div class="video-thumbnail">
-                                <img src="img/jose_cuervo_miniatura.png" alt="Miniatura Motion 2">
-                                <i class="fas fa-play play-icon"></i>
-                            </div>
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">José Cuervo</h4>
-                                <p class="project-item-desc">Animación publicitaria</p>
-                            </div>
-                        </div>
-                        Motion Graphics 3 -->
-                <!--<div class="project-item motion-video" onclick="openVideoModal('video/motion3.mp4', 'Motion Graphics 3')">
-                            <div class="video-thumbnail">
-                                <img src="img/thumb-motion3.jpg" alt="Miniatura Motion 3">
-                                <i class="fas fa-play play-icon"></i>
-                            </div>
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">Motion Graphics 3</h4>
-                                <p class="project-item-desc">Animación explicativa para producto</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
-
-                <!-- 3D1 - Personajes Animados -->
-                <div class="projects-section">
-                    <h3 class="projects-section-title">MODELADO 3D</h3>
-                    <div class="projects-grid">
-                        <!-- 3D1 Image 1 -->
-                        <div class="project-item modeling-image"
-                            onclick="openImageLightbox('img/BPR_Composite_mulan (1).jpg', 'MULAN', 'Escultura Fan Art 3D')">
-                            <img src="img/BPR_Composite_mulan_cara (1).jpg" alt="Personaje 3D 1">
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">MULAN</h4>
-                                <p class="project-item-desc">Escultura Fan Art 3D</p>
-                            </div>
-                        </div>
-                        <!-- 3D1 Image 2 -->
-                        <div class="project-item modeling-image"
-                            onclick="openImageLightbox('img/render_robot_niña.jpg', 'ROBOTI', 'Modelado de personaje para niños')">
-                            <img src="img/ola robot.jpg" alt="Personaje 3D 2">
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">ROBOTI</h4>
-                                <p class="project-item-desc">Modelado de personaje para niños</p>
-                            </div>
-                        </div>
-                        <!-- 3D1 Image 3 -->
-                        <div class="project-item modeling-image"
-                            onclick="openImageLightbox('img/SANTUARIO RENDES.jpg', 'SANTUARIO Y BOSQUE', 'Modelado 3D para cortometraje')">
-                            <img src="img/3d_bosque3.jpg" alt="Personaje 3D 3">
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">SANTUARIO Y BOSQUE</h4>
-                                <p class="project-item-desc">Modelado 3D para cortometraje</p>
-                            </div>
-                        </div>
-                        <!-- 3D1 Image 4 -->
-                        <div class="project-item modeling-image"
-                            onclick="openImageLightbox('img/cabaña_interior.jpg', 'Personaje 3D 4', 'Modelado de personaje estilo cartoon')">
-                            <img src="img/CABAÑAAAAAAA.png" alt="Personaje 3D 4">
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">CABAÑA INT. Y EXT.</h4>
-                                <p class="project-item-desc">Modelado 3D para cortometraje</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- 3D2 - Escenarios Virtuales -->
-                <!-- <div class="projects-section">
-                    <h3 class="projects-section-title">3D2 - Escenarios Virtuales</h3>
-                    <div class="projects-grid">
-                        <!-- 3D2 Image 1 -->
-                <!-- <div class="project-item modeling-image" onclick="openImageLightbox('img/3d2-1.jpg', 'Escenario 3D 1', 'Escenario arquitectónico virtual')">
-                            <img src="img/3d2-1.jpg" alt="Escenario 3D 1">
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">Escenario 3D 1</h4>
-                                <p class="project-item-desc">Escenario arquitectónico virtual</p>
-                            </div>
-                        </div>
-                        <!-- 3D2 Image 2 -->
-                <!-- <div class="project-item modeling-image" onclick="openImageLightbox('img/3d2-2.jpg', 'Escenario 3D 2', 'Diseño de ambiente futurista')">
-                            <img src="img/3d2-2.jpg" alt="Escenario 3D 2">
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">Escenario 3D 2</h4>
-                                <p class="project-item-desc">Diseño de ambiente futurista</p>
-                            </div>
-                        </div>
-                        <!-- 3D2 Image 3 -->
-                <!-- <div class="project-item modeling-image" onclick="openImageLightbox('img/3d2-3.jpg', 'Escenario 3D 3', 'Escenario natural con iluminación realista')">
-                            <img src="img/3d2-3.jpg" alt="Escenario 3D 3">
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">Escenario 3D 3</h4>
-                                <p class="project-item-desc">Escenario natural con iluminación realista</p>
-                            </div>
-                        </div>
-                        <!-- 3D2 Image 4 -->
-                <!-- <div class="project-item modeling-image" onclick="openImageLightbox('img/3d2-4.jpg', 'Escenario 3D 4', 'Entorno urbano detallado')">
-                            <img src="img/3d2-4.jpg" alt="Escenario 3D 4">
-                            <div class="project-item-overlay">
-                                <h4 class="project-item-title">Escenario 3D 4</h4>
-                                <p class="project-item-desc">Entorno urbano detallado</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- Premiere Pro -->
+            <div class="skill-item">
+              <div class="skill-icon">
+                <i
+                  class="fas fa-video"
+                  style="color: #2a2bdf; font-size: 2.5rem"
+                ></i>
+              </div>
+              <h3>Premiere Pro</h3>
+              <div class="skill-bar">
+                <div
+                  class="skill-level"
+                  style="background-color: #2a2bdf"
+                  data-width="90%"
+                ></div>
+              </div>
+              <span class="skill-percent">0%</span>
             </div>
-        </section>
 
-        <! Sección Contacto -->
-        <section id="Contacto" class="contact">
-            <div class="container">
-                <h2 class="section-title">Trabajemos Juntos</h2>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <h3>Información de Contacto</h3>
-                        <p><i class="fas fa-envelope"></i> alexandravargas.studio@gmail.com</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Lima, Perú</p>
-                        <div class="contact-social">
-                            <a href="https://www.instagram.com/ale.xayumi/"><i class="fab fa-instagram"></i></a>
-                            <!--<a href="#"><i class="fab fa-vimeo"></i></a>-->
-                            <a href="https://www.linkedin.com/in/alexandra-vargas-567643276/"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://www.youtube.com/channel/UC_qWAfZlGvqGQaLZ1Mxf3ww"><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                    <form class="contact-form">
-                        <div class="form-group">
-                            <input type="text" placeholder="Nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Asunto">
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Mensaje" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                    </form>
-                </div>
+            <!-- Photoshop -->
+            <div class="skill-item">
+              <div class="skill-icon">
+                <i
+                  class="fas fa-image"
+                  style="color: #f57dd6; font-size: 2.5rem"
+                ></i>
+              </div>
+              <h3>Photoshop</h3>
+              <div class="skill-bar">
+                <div
+                  class="skill-level"
+                  style="background-color: #f57dd6"
+                  data-width="85%"
+                ></div>
+              </div>
+              <span class="skill-percent">0%</span>
             </div>
-        </section>
+
+            <!-- Audition -->
+            <div class="skill-item">
+              <div class="skill-icon">
+                <i
+                  class="fas fa-volume-up"
+                  style="color: #95f1e3; font-size: 2.5rem"
+                ></i>
+              </div>
+              <h3>Adobe Audition</h3>
+              <div class="skill-bar">
+                <div
+                  class="skill-level"
+                  style="background-color: #95f1e3"
+                  data-width="88%"
+                ></div>
+              </div>
+              <span class="skill-percent">0%</span>
+            </div>
+
+            <!-- Maya -->
+            <div class="skill-item">
+              <div class="skill-icon">
+                <i
+                  class="fas fa-cube"
+                  style="color: #a14fe3; font-size: 2.5rem"
+                ></i>
+              </div>
+              <h3>Autodesk Maya</h3>
+              <div class="skill-bar">
+                <div
+                  class="skill-level"
+                  style="background-color: #a14fe3"
+                  data-width="80%"
+                ></div>
+              </div>
+              <span class="skill-percent">0%</span>
+            </div>
+
+            <!-- ZBrush -->
+            <div class="skill-item">
+              <div class="skill-icon">
+                <i
+                  class="fas fa-paint-brush"
+                  style="color: #2a2bdf; font-size: 2.5rem"
+                ></i>
+              </div>
+              <h3>ZBrush</h3>
+              <div class="skill-bar">
+                <div
+                  class="skill-level"
+                  style="background-color: #2a2bdf"
+                  data-width="75%"
+                ></div>
+              </div>
+              <span class="skill-percent">0%</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Proyectos - MODIFICADA PARA YOUTUBE -->
+      <section id="proyectos" class="projects">
+        <div class="container">
+          <h2 class="section-title">Mis Proyectos</h2>
+
+          <!-- Vertical Videos (6 proyectos) -->
+          <div class="projects-section">
+            <h3 class="projects-section-title">Vertical Videos</h3>
+            <div class="projects-grid">
+              <!-- Vertical Video 1 -->
+              <div
+                class="project-item vertical-video"
+                onclick="openYouTubeModal('fvaRlduafRQ', 'VELIA')"
+              >
+                <div class="video-thumbnail">
+                  <img
+                    src="img/miniatura_velia.png"
+                    alt="Miniatura Vertical 1"
+                  />
+                  <i class="fas fa-play play-icon"></i>
+                </div>
+                <div class="project-item-overlay">
+                  <h4 class="project-item-title">VELIA</h4>
+                  <p class="project-item-desc">Publicidad para marca de ropa</p>
+                </div>
+              </div>
+              <!-- Vertical Video 2 -->
+              <div
+                class="project-item vertical-video"
+                onclick="openYouTubeModal('J0aCFNKfemU', 'SENTI')"
+              >
+                <div class="video-thumbnail">
+                  <img src="img/senti.png" alt="Miniatura Vertical 2" />
+                  <i class="fas fa-play play-icon"></i>
+                </div>
+                <div class="project-item-overlay">
+                  <h4 class="project-item-title">SENTI</h4>
+                  <p class="project-item-desc">Publicidad para aplicación</p>
+                </div>
+              </div>
+              <!-- Vertical Video 3 -->
+              <div
+                class="project-item vertical-video"
+                onclick="openYouTubeModal('Jv5vRObVYX4', 'PAPA JOHNS')"
+              >
+                <div class="video-thumbnail">
+                  <img
+                    src="img/papas_miniatura.png"
+                    alt="Miniatura Vertical 3"
+                  />
+                  <i class="fas fa-play play-icon"></i>
+                </div>
+                <div class="project-item-overlay">
+                  <h4 class="project-item-title">PAPA JOHNS</h4>
+                  <p class="project-item-desc">
+                    Publicidad de comida para tiktok
+                  </p>
+                </div>
+              </div>
+              <!-- Vertical Video 4 -->
+              <div
+                class="project-item vertical-video"
+                onclick="openYouTubeModal('VLzYS2SqrcE', 'BLENDER')"
+              >
+                <div class="video-thumbnail">
+                  <img
+                    src="img/blender_miniatura.png"
+                    alt="Miniatura Vertical 4"
+                  />
+                  <i class="fas fa-play play-icon"></i>
+                </div>
+                <div class="project-item-overlay">
+                  <h4 class="project-item-title">BLENDER</h4>
+                  <p class="project-item-desc">Reel para tiktok</p>
+                </div>
+              </div>
+              <!-- Vertical Video 5 -->
+              <div
+                class="project-item vertical-video"
+                onclick="openYouTubeModal('S5Zh8BbsE0U', 'WINTER SALE')"
+              >
+                <div class="video-thumbnail">
+                  <img
+                    src="img/PROMOCION_MINIATURA.png"
+                    alt="Miniatura Vertical 5"
+                  />
+                  <i class="fas fa-play play-icon"></i>
+                </div>
+                <div class="project-item-overlay">
+                  <h4 class="project-item-title">WINTER SALE</h4>
+                  <p class="project-item-desc">Reel para tiktok</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Horizontal Videos (6 proyectos) -->
+          <div class="projects-section">
+            <h3 class="projects-section-title">Horizontal Videos</h3>
+            <div class="projects-grid">
+              <!-- Horizontal Video 1 -->
+              <div
+                class="project-item horizontal-video"
+                onclick="openYouTubeModal('G36Va57oGLs', 'Training Potenciado por IA')"
+              >
+                <div class="video-thumbnail">
+                  <img
+                    src="img/MINIATURA_TRADING.png"
+                    alt="Miniatura Horizontal 1"
+                  />
+                  <i class="fas fa-play play-icon"></i>
+                </div>
+                <div class="project-item-overlay">
+                  <h4 class="project-item-title">Training Potenciado por IA</h4>
+                  <p class="project-item-desc">Animación motion graphics</p>
+                </div>
+              </div>
+              <!-- Horizontal Video 2 -->
+              <div
+                class="project-item horizontal-video"
+                onclick="openYouTubeModal('jbfHmHJPQD4', 'MONALISA')"
+              >
+                <div class="video-thumbnail">
+                  <img
+                    src="img/mona_lisa_miniatura.jpg"
+                    alt="Miniatura Horizontal 2"
+                  />
+                  <i class="fas fa-play play-icon"></i>
+                </div>
+                <div class="project-item-overlay">
+                  <h4 class="project-item-title">MONALISA</h4>
+                  <p class="project-item-desc">Video lyric</p>
+                </div>
+              </div>
+              <!-- Horizontal Video 3 -->
+              <div
+                class="project-item horizontal-video"
+                onclick="openYouTubeModal('6KnSX_8mrVw', 'LITTLE CESAR')"
+              >
+                <div class="video-thumbnail">
+                  <img
+                    src="img/miniatura_spot_pizza.png"
+                    alt="Miniatura Horizontal 3"
+                  />
+                  <i class="fas fa-play play-icon"></i>
+                </div>
+                <div class="project-item-overlay">
+                  <h4 class="project-item-title">LITTLE CESAR</h4>
+                  <p class="project-item-desc">Spot publicitario para tv</p>
+                </div>
+              </div>
+              <!-- Horizontal Video 4 -->
+              <div
+                class="project-item horizontal-video"
+                onclick="openYouTubeModal('GP5I9Fd2i80', 'JOSE CUERVO')"
+              >
+                <div class="video-thumbnail">
+                  <img
+                    src="img/jose_cuervo_miniatura.png"
+                    alt="Miniatura Horizontal 4"
+                  />
+                  <i class="fas fa-play play-icon"></i>
+                </div>
+                <div class="project-item-overlay">
+                  <h4 class="project-item-title">JOSE CUERVO</h4>
+                  <p class="project-item-desc">Publicidad</p>
+                </div>
+              </div>
+              <!-- Horizontal Video 5 -->
+              <div
+                class="project-item horizontal-video"
+                onclick="openYouTubeModal('QeE2Z-jmpIY', 'CONSEGUIR CLIENTES')"
+              >
+                <div class="video-thumbnail">
+                  <img
+                    src="img/miniatura_consguir_clientes.png"
+                    alt="Miniatura Horizontal 5"
+                  />
+                  <i class="fas fa-play play-icon"></i>
+                </div>
+                <div class="project-item-overlay">
+                  <h4 class="project-item-title">CONSEGUIR CLIENTES</h4>
+                  <p class="project-item-desc">Video para YT</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODELADO 3D -->
+          <div class="projects-section">
+            <h3 class="projects-section-title">MODELADO 3D</h3>
+            <div class="projects-grid">
+              <!-- 3D1 Image 1 -->
+              <div
+                class="project-item modeling-image"
+                onclick="openImageLightbox('img/BPR_Composite_mulan (1).jpg', 'MULAN', 'Escultura Fan Art 3D')"
+              >
+                <img
+                  src="img/BPR_Composite_mulan_cara (1).jpg"
+                  alt="Personaje 3D 1"
+                />
+                <div class="project-item-overlay">
+                  <h4 class="project-item-title">MULAN</h4>
+                  <p class="project-item-desc">Escultura Fan Art 3D</p>
+                </div>
+              </div>
+              <!-- 3D1 Image 2 -->
+              <div
+                class="project-item modeling-image"
+                onclick="openImageLightbox('img/render_robot_niña.jpg', 'ROBOTI', 'Modelado de personaje para niños')"
+              >
+                <img src="img/ola robot.jpg" alt="Personaje 3D 2" />
+                <div class="project-item-overlay">
+                  <h4 class="project-item-title">ROBOTI</h4>
+                  <p class="project-item-desc">
+                    Modelado de personaje para niños
+                  </p>
+                </div>
+              </div>
+              <!-- 3D1 Image 3 -->
+              <div
+                class="project-item modeling-image"
+                onclick="openImageLightbox('img/SANTUARIO RENDES.jpg', 'SANTUARIO Y BOSQUE', 'Modelado 3D para cortometraje')"
+              >
+                <img src="img/3d_bosque3.jpg" alt="Personaje 3D 3" />
+                <div class="project-item-overlay">
+                  <h4 class="project-item-title">SANTUARIO Y BOSQUE</h4>
+                  <p class="project-item-desc">Modelado 3D para cortometraje</p>
+                </div>
+              </div>
+              <!-- 3D1 Image 4 -->
+              <div
+                class="project-item modeling-image"
+                onclick="openImageLightbox('img/cabaña_interior.jpg', 'Personaje 3D 4', 'Modelado de personaje estilo cartoon')"
+              >
+                <img src="img/CABAÑAAAAAAA.png" alt="Personaje 3D 4" />
+                <div class="project-item-overlay">
+                  <h4 class="project-item-title">CABAÑA INT. Y EXT.</h4>
+                  <p class="project-item-desc">Modelado 3D para cortometraje</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Contacto -->
+      <section id="Contacto" class="contact">
+        <div class="container">
+          <h2 class="section-title">Trabajemos Juntos</h2>
+          <div class="contact-content">
+            <div class="contact-info">
+              <h3>Información de Contacto</h3>
+              <p>
+                <i class="fas fa-envelope"></i> alexandravargas.studio@gmail.com
+              </p>
+              <p><i class="fas fa-map-marker-alt"></i> Lima, Perú</p>
+              <div class="contact-social">
+                <a href="https://www.instagram.com/ale.xayumi/"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a
+                  href="https://www.linkedin.com/in/alexandra-vargas-567643276/"
+                  ><i class="fab fa-linkedin"></i
+                ></a>
+                <a
+                  href="https://www.youtube.com/channel/UC_qWAfZlGvqGQaLZ1Mxf3ww"
+                  ><i class="fab fa-youtube"></i
+                ></a>
+              </div>
+            </div>
+            <form class="contact-form">
+              <div class="form-group">
+                <input type="text" placeholder="Nombre" required />
+              </div>
+              <div class="form-group">
+                <input type="email" placeholder="Email" required />
+              </div>
+              <div class="form-group">
+                <input type="text" placeholder="Asunto" />
+              </div>
+              <div class="form-group">
+                <textarea placeholder="Mensaje" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Enviar Mensaje
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>Alexandra Vargas</h3>
-                    <p>Editora de Video</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Enlaces Rápidos</h4>
-                    <ul>
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#sobre-mi">Sobre Mí</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#proyectos">Proyectos</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-social">
-                    <h4>Sígueme</h4>
-                    <div class="social-icons">
-                        <a href="https://www.instagram.com/ale.xayumi/"><i class="fab fa-instagram"></i></a>
-                        <!--<a href="#"><i class="fab fa-vimeo"></i></a>-->
-                        <a href="https://www.linkedin.com/in/alexandra-vargas-567643276/"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://www.youtube.com/channel/UC_qWAfZlGvqGQaLZ1Mxf3ww"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h3>Alexandra Vargas</h3>
+            <p>Editora de Video</p>
+          </div>
+          <div class="footer-links">
+            <h4>Enlaces Rápidos</h4>
+            <ul>
+              <li><a href="#inicio">Inicio</a></li>
+              <li><a href="#sobre-mi">Sobre Mí</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#proyectos">Proyectos</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+            </ul>
+          </div>
+          <div class="footer-social">
+            <h4>Sígueme</h4>
+            <div class="social-icons">
+              <a href="https://www.instagram.com/ale.xayumi/"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://www.linkedin.com/in/alexandra-vargas-567643276/"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="https://www.youtube.com/channel/UC_qWAfZlGvqGQaLZ1Mxf3ww"
+                ><i class="fab fa-youtube"></i
+              ></a>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Alexandra Vargas. Todos los derechos reservados.</p>
-            </div>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Alexandra Vargas. Todos los derechos reservados.</p>
+        </div>
+      </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Preloader
-        window.addEventListener('load', function () {
-            const preloader = document.querySelector('.preloader');
-            setTimeout(function () {
-                preloader.classList.add('fade-out');
-                setTimeout(function () {
-                    preloader.style.display = 'none';
-                }, 500);
-            }, 1500); // 1.5 segundos de carga simulada
-        });
+      // Preloader
+      window.addEventListener("load", function () {
+        const preloader = document.querySelector(".preloader");
+        setTimeout(function () {
+          preloader.classList.add("fade-out");
+          setTimeout(function () {
+            preloader.style.display = "none";
+          }, 500);
+        }, 1500); // 1.5 segundos de carga simulada
+      });
 
-        // Efecto de scroll para el header
-        window.addEventListener('scroll', function () {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+      // Efecto de scroll para el header
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector(".header");
+        if (window.scrollY > 100) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
 
-        // Smooth scrolling para los enlaces de navegación
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+      // Smooth scrolling para los enlaces de navegación
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
 
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
 
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-
-                    // Actualizar enlace activo
-                    document.querySelectorAll('.nav-link').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                }
-            });
-        });
-
-        // Animación de habilidades al hacer scroll
-        function animateSkillsOnScroll() {
-            const skillItems = document.querySelectorAll('.skill-item');
-            const skillSection = document.querySelector('.skills');
-
-            function checkVisibility() {
-                const sectionTop = skillSection.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-
-                if (sectionTop < windowHeight - 100) {
-                    skillItems.forEach((item, index) => {
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'translateY(0)';
-
-                            // Animar las barras de habilidades
-                            const skillLevel = item.querySelector('.skill-level');
-                            const skillPercent = item.querySelector('.skill-percent');
-                            const width = skillLevel.getAttribute('data-width');
-                            let currentPercent = 0;
-
-                            skillLevel.style.width = '0';
-
-                            const animationInterval = setInterval(() => {
-                                if (currentPercent >= parseInt(width)) {
-                                    clearInterval(animationInterval);
-                                } else {
-                                    currentPercent += 1;
-                                    skillLevel.style.width = currentPercent + '%';
-                                    skillPercent.textContent = currentPercent + '%';
-                                }
-                            }, 20);
-
-                        }, index * 150);
-                    });
-                    window.removeEventListener('scroll', checkVisibility);
-                }
-            }
-
-            // Inicializar opacidad y posición
-            skillItems.forEach(item => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(20px)';
-                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
             });
 
-            window.addEventListener('scroll', checkVisibility);
-            checkVisibility(); // Verificar al cargar la página
+            // Actualizar enlace activo
+            document.querySelectorAll(".nav-link").forEach((link) => {
+              link.classList.remove("active");
+            });
+            this.classList.add("active");
+          }
+        });
+      });
+
+      // Animación de habilidades al hacer scroll
+      function animateSkillsOnScroll() {
+        const skillItems = document.querySelectorAll(".skill-item");
+        const skillSection = document.querySelector(".skills");
+
+        function checkVisibility() {
+          const sectionTop = skillSection.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+
+          if (sectionTop < windowHeight - 100) {
+            skillItems.forEach((item, index) => {
+              setTimeout(() => {
+                item.style.opacity = "1";
+                item.style.transform = "translateY(0)";
+
+                // Animar las barras de habilidades
+                const skillLevel = item.querySelector(".skill-level");
+                const skillPercent = item.querySelector(".skill-percent");
+                const width = skillLevel.getAttribute("data-width");
+                let currentPercent = 0;
+
+                skillLevel.style.width = "0";
+
+                const animationInterval = setInterval(() => {
+                  if (currentPercent >= parseInt(width)) {
+                    clearInterval(animationInterval);
+                  } else {
+                    currentPercent += 1;
+                    skillLevel.style.width = currentPercent + "%";
+                    skillPercent.textContent = currentPercent + "%";
+                  }
+                }, 20);
+              }, index * 150);
+            });
+            window.removeEventListener("scroll", checkVisibility);
+          }
         }
 
-        // Crear elementos flotantes más elaborados
-        function createFloatingElements() {
-            const container = document.querySelector('.floating-elements');
-            const colors = ['var(--morado)', 'var(--azul)', 'var(--rosado)', 'var(--verde-agua)'];
-            const shapes = ['circle', 'blob', 'triangle', 'square'];
+        // Inicializar opacidad y posición
+        skillItems.forEach((item) => {
+          item.style.opacity = "0";
+          item.style.transform = "translateY(20px)";
+          item.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+        });
 
-            for (let i = 0; i < 15; i++) {
-                const element = document.createElement('div');
-                element.classList.add('floating-element');
+        window.addEventListener("scroll", checkVisibility);
+        checkVisibility(); // Verificar al cargar la página
+      }
 
-                const size = Math.random() * 200 + 50;
-                const duration = Math.random() * 25 + 15;
-                const delay = Math.random() * 15;
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                const shape = shapes[Math.floor(Math.random() * shapes.length)];
+      // Crear elementos flotantes más elaborados
+      function createFloatingElements() {
+        const container = document.querySelector(".floating-elements");
+        const colors = [
+          "var(--morado)",
+          "var(--azul)",
+          "var(--rosado)",
+          "var(--verde-agua)",
+        ];
+        const shapes = ["circle", "blob", "triangle", "square"];
 
-                element.style.width = `${size}px`;
-                element.style.height = `${size}px`;
-                element.style.background = color;
-                element.style.top = `${Math.random() * 100}%`;
-                element.style.left = `${Math.random() * 100}%`;
-                element.style.animationDuration = `${duration}s`;
-                element.style.animationDelay = `-${delay}s`;
-                element.style.opacity = `${Math.random() * 0.3 + 0.1}`;
+        for (let i = 0; i < 15; i++) {
+          const element = document.createElement("div");
+          element.classList.add("floating-element");
 
-                // Formas diferentes
-                if (shape === 'blob') {
-                    element.style.borderRadius = '50% 30% 70% 40% / 60% 40% 60% 40%';
-                } else if (shape === 'triangle') {
-                    element.style.clipPath = 'polygon(50% 0%, 0% 100%, 100% 100%)';
-                    element.style.borderRadius = '0';
-                } else if (shape === 'square') {
-                    element.style.borderRadius = '10px';
-                } else {
-                    element.style.borderRadius = '50%';
-                }
+          const size = Math.random() * 200 + 50;
+          const duration = Math.random() * 25 + 15;
+          const delay = Math.random() * 15;
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          const shape = shapes[Math.floor(Math.random() * shapes.length)];
 
-                // Rotación aleatoria
-                element.style.transform = `rotate(${Math.random() * 360}deg)`;
+          element.style.width = `${size}px`;
+          element.style.height = `${size}px`;
+          element.style.background = color;
+          element.style.top = `${Math.random() * 100}%`;
+          element.style.left = `${Math.random() * 100}%`;
+          element.style.animationDuration = `${duration}s`;
+          element.style.animationDelay = `-${delay}s`;
+          element.style.opacity = `${Math.random() * 0.3 + 0.1}`;
 
-                container.appendChild(element);
-            }
+          // Formas diferentes
+          if (shape === "blob") {
+            element.style.borderRadius = "50% 30% 70% 40% / 60% 40% 60% 40%";
+          } else if (shape === "triangle") {
+            element.style.clipPath = "polygon(50% 0%, 0% 100%, 100% 100%)";
+            element.style.borderRadius = "0";
+          } else if (shape === "square") {
+            element.style.borderRadius = "10px";
+          } else {
+            element.style.borderRadius = "50%";
+          }
+
+          // Rotación aleatoria
+          element.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+          container.appendChild(element);
         }
+      }
 
-        // Inicializar partículas más complejas
-        function initParticles() {
-            particlesJS("particles-js", {
-                "particles": {
-                    "number": {
-                        "value": 120,
-                        "density": {
-                            "enable": true,
-                            "value_area": 1000
-                        }
-                    },
-                    "color": {
-                        "value": ["#A14FE3", "#2A2BDF", "#F57DD6", "#95F1E3"]
-                    },
-                    "shape": {
-                        "type": ["circle", "triangle", "polygon"],
-                        "stroke": {
-                            "width": 0,
-                            "color": "#000000"
-                        },
-                        "polygon": {
-                            "nb_sides": 5
-                        }
-                    },
-                    "opacity": {
-                        "value": 0.7,
-                        "random": true,
-                        "anim": {
-                            "enable": true,
-                            "speed": 1,
-                            "opacity_min": 0.1,
-                            "sync": false
-                        }
-                    },
-                    "size": {
-                        "value": 4,
-                        "random": true,
-                        "anim": {
-                            "enable": true,
-                            "speed": 2,
-                            "size_min": 0.1,
-                            "sync": false
-                        }
-                    },
-                    "line_linked": {
-                        "enable": true,
-                        "distance": 150,
-                        "color": "#A14FE3",
-                        "opacity": 0.3,
-                        "width": 1
-                    },
-                    "move": {
-                        "enable": true,
-                        "speed": 1.5,
-                        "direction": "none",
-                        "random": true,
-                        "straight": false,
-                        "out_mode": "out",
-                        "bounce": false,
-                        "attract": {
-                            "enable": true,
-                            "rotateX": 600,
-                            "rotateY": 1200
-                        }
-                    }
+      // Inicializar partículas más complejas
+      function initParticles() {
+        particlesJS("particles-js", {
+          particles: {
+            number: {
+              value: 120,
+              density: {
+                enable: true,
+                value_area: 1000,
+              },
+            },
+            color: {
+              value: ["#A14FE3", "#2A2BDF", "#F57DD6", "#95F1E3"],
+            },
+            shape: {
+              type: ["circle", "triangle", "polygon"],
+              stroke: {
+                width: 0,
+                color: "#000000",
+              },
+              polygon: {
+                nb_sides: 5,
+              },
+            },
+            opacity: {
+              value: 0.7,
+              random: true,
+              anim: {
+                enable: true,
+                speed: 1,
+                opacity_min: 0.1,
+                sync: false,
+              },
+            },
+            size: {
+              value: 4,
+              random: true,
+              anim: {
+                enable: true,
+                speed: 2,
+                size_min: 0.1,
+                sync: false,
+              },
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: "#A14FE3",
+              opacity: 0.3,
+              width: 1,
+            },
+            move: {
+              enable: true,
+              speed: 1.5,
+              direction: "none",
+              random: true,
+              straight: false,
+              out_mode: "out",
+              bounce: false,
+              attract: {
+                enable: true,
+                rotateX: 600,
+                rotateY: 1200,
+              },
+            },
+          },
+          interactivity: {
+            detect_on: "canvas",
+            events: {
+              onhover: {
+                enable: true,
+                mode: "grab",
+              },
+              onclick: {
+                enable: true,
+                mode: "push",
+              },
+              resize: true,
+            },
+            modes: {
+              grab: {
+                distance: 140,
+                line_linked: {
+                  opacity: 0.8,
                 },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": {
-                        "onhover": {
-                            "enable": true,
-                            "mode": "grab"
-                        },
-                        "onclick": {
-                            "enable": true,
-                            "mode": "push"
-                        },
-                        "resize": true
-                    },
-                    "modes": {
-                        "grab": {
-                            "distance": 140,
-                            "line_linked": {
-                                "opacity": 0.8
-                            }
-                        },
-                        "push": {
-                            "particles_nb": 4
-                        }
-                    }
-                },
-                "retina_detect": true
-            });
-        }
-
-        // Video Modal
-        function setupVideoModal() {
-            const modal = document.getElementById('videoModal');
-            const modalVideo = document.getElementById('modalVideo');
-            const closeBtn = document.querySelector('.close-modal');
-
-            // Cerrar modal
-            closeBtn.addEventListener('click', function () {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-                modalVideo.pause();
-                modalVideo.currentTime = 0;
-            });
-
-            // Cerrar al hacer click fuera del video
-            window.addEventListener('click', function (e) {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                    modalVideo.pause();
-                    modalVideo.currentTime = 0;
-                }
-            });
-
-            // Cerrar con tecla ESC
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && modal.style.display === 'flex') {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                    modalVideo.pause();
-                    modalVideo.currentTime = 0;
-                }
-            });
-        }
-
-        // Función para abrir el modal de video
-        function openVideoModal(videoSrc, title) {
-            const modal = document.getElementById('videoModal');
-            const modalVideo = document.getElementById('modalVideo');
-
-            modalVideo.src = videoSrc;
-            document.querySelector('.modal-content').setAttribute('data-title', title);
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            modalVideo.play();
-        }
-
-        // Efecto de ondas mejorado
-        function enhanceWaves() {
-            const waveContainer = document.querySelector('.wave-container');
-            for (let i = 0; i < 3; i++) {
-                const wave = document.createElement('div');
-                wave.className = 'wave';
-                wave.style.background = `linear-gradient(90deg, 
-                    ${i === 0 ? 'var(--morado)' : i === 1 ? 'var(--azul)' : 'var(--rosado)'}, 
-                    ${i === 0 ? 'var(--azul)' : i === 1 ? 'var(--rosado)' : 'var(--verde-agua)'})`;
-                wave.style.opacity = `${0.05 + i * 0.03}`;
-                wave.style.animationDuration = `${20 + i * 5}s`;
-                wave.style.height = `${80 - i * 10}%`;
-                wave.style.bottom = `${i * 5}%`;
-                waveContainer.appendChild(wave);
-            }
-        }
-
-        // Lightbox para imágenes
-        function setupImageLightbox() {
-            const lightbox = document.getElementById('imageLightbox');
-            const lightboxImage = document.getElementById('lightboxImage');
-            const lightboxCaption = document.getElementById('lightboxCaption');
-            const closeBtn = document.querySelector('.lightbox-close');
-
-            // Cerrar lightbox
-            closeBtn.addEventListener('click', function () {
-                lightbox.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
-
-            // Cerrar al hacer click fuera de la imagen
-            lightbox.addEventListener('click', function (e) {
-                if (e.target === lightbox) {
-                    lightbox.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-
-            // Cerrar con tecla ESC
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && lightbox.style.display === 'flex') {
-                    lightbox.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        }
-
-        // Función para abrir el lightbox de imágenes
-        function openImageLightbox(imageSrc, title, description) {
-            const lightbox = document.getElementById('imageLightbox');
-            const lightboxImage = document.getElementById('lightboxImage');
-            const lightboxCaption = document.getElementById('lightboxCaption');
-
-            lightboxImage.src = imageSrc;
-            lightboxImage.alt = title;
-            lightboxCaption.textContent = `${title} - ${description}`;
-            lightbox.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Llamar a las funciones de inicialización
-        document.addEventListener('DOMContentLoaded', function () {
-            createFloatingElements();
-            initParticles();
-            animateSkillsOnScroll();
-            setupVideoModal();
-            enhanceWaves();
-            setupImageLightbox();
-
-            // Actualizar enlace activo al cargar la página
-            const currentHash = window.location.hash || '#inicio';
-            document.querySelector(`.nav-link[href="${currentHash}"]`).classList.add('active');
+              },
+              push: {
+                particles_nb: 4,
+              },
+            },
+          },
+          retina_detect: true,
         });
+      }
+
+      // Video Modal para YouTube
+      function setupVideoModal() {
+        const modal = document.getElementById("videoModal");
+        const youtubeIframe = document.getElementById("youtubeVideo");
+        const closeBtn = document.querySelector(".close-modal");
+
+        // Cerrar modal
+        closeBtn.addEventListener("click", function () {
+          modal.style.display = "none";
+          document.body.style.overflow = "auto";
+          youtubeIframe.src = ""; // Detener el video
+        });
+
+        // Cerrar al hacer click fuera del video
+        window.addEventListener("click", function (e) {
+          if (e.target === modal) {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+            youtubeIframe.src = ""; // Detener el video
+          }
+        });
+
+        // Cerrar con tecla ESC
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && modal.style.display === "flex") {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+            youtubeIframe.src = ""; // Detener el video
+          }
+        });
+      }
+
+      // Función para abrir el modal de video de YouTube
+      function openYouTubeModal(videoId, title) {
+        const modal = document.getElementById("videoModal");
+        const youtubeIframe = document.getElementById("youtubeVideo");
+
+        // Configurar la URL del iframe de YouTube con autoplay
+        youtubeIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+
+        document
+          .querySelector(".modal-content")
+          .setAttribute("data-title", title);
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      }
+
+      // Efecto de ondas mejorado
+      function enhanceWaves() {
+        const waveContainer = document.querySelector(".wave-container");
+        for (let i = 0; i < 3; i++) {
+          const wave = document.createElement("div");
+          wave.className = "wave";
+          wave.style.background = `linear-gradient(90deg, 
+                    ${
+                      i === 0
+                        ? "var(--morado)"
+                        : i === 1
+                        ? "var(--azul)"
+                        : "var(--rosado)"
+                    }, 
+                    ${
+                      i === 0
+                        ? "var(--azul)"
+                        : i === 1
+                        ? "var(--rosado)"
+                        : "var(--verde-agua)"
+                    })`;
+          wave.style.opacity = `${0.05 + i * 0.03}`;
+          wave.style.animationDuration = `${20 + i * 5}s`;
+          wave.style.height = `${80 - i * 10}%`;
+          wave.style.bottom = `${i * 5}%`;
+          waveContainer.appendChild(wave);
+        }
+      }
+
+      // Lightbox para imágenes
+      function setupImageLightbox() {
+        const lightbox = document.getElementById("imageLightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxCaption = document.getElementById("lightboxCaption");
+        const closeBtn = document.querySelector(".lightbox-close");
+
+        // Cerrar lightbox
+        closeBtn.addEventListener("click", function () {
+          lightbox.style.display = "none";
+          document.body.style.overflow = "auto";
+        });
+
+        // Cerrar al hacer click fuera de la imagen
+        lightbox.addEventListener("click", function (e) {
+          if (e.target === lightbox) {
+            lightbox.style.display = "none";
+            document.body.style.overflow = "auto";
+          }
+        });
+
+        // Cerrar con tecla ESC
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && lightbox.style.display === "flex") {
+            lightbox.style.display = "none";
+            document.body.style.overflow = "auto";
+          }
+        });
+      }
+
+      // Función para abrir el lightbox de imágenes
+      function openImageLightbox(imageSrc, title, description) {
+        const lightbox = document.getElementById("imageLightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxCaption = document.getElementById("lightboxCaption");
+
+        lightboxImage.src = imageSrc;
+        lightboxImage.alt = title;
+        lightboxCaption.textContent = `${title} - ${description}`;
+        lightbox.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      }
+
+      // Llamar a las funciones de inicialización
+      document.addEventListener("DOMContentLoaded", function () {
+        createFloatingElements();
+        initParticles();
+        animateSkillsOnScroll();
+        setupVideoModal();
+        enhanceWaves();
+        setupImageLightbox();
+
+        // Actualizar enlace activo al cargar la página
+        const currentHash = window.location.hash || "#inicio";
+        document
+          .querySelector(`.nav-link[href="${currentHash}"]`)
+          .classList.add("active");
+      });
     </script>
-</body>
-
+  </body>
 </html>
