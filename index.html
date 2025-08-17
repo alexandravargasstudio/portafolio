@@ -30,6 +30,7 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        /* Eliminado cursor: none; para restaurar cursor normal */
       }
 
       body {
@@ -39,6 +40,8 @@
         line-height: 1.6;
         overflow-x: hidden;
       }
+
+      /* Eliminadas todas las reglas CSS relacionadas con el cursor personalizado */
 
       /* Preloader */
       .preloader {
@@ -71,6 +74,7 @@
         border-radius: 50%;
         animation: spin 1s linear infinite;
         margin: 0 auto 20px;
+        box-shadow: 0 0 20px var(--morado);
       }
 
       .preloader h3 {
@@ -79,6 +83,7 @@
         color: var(--blanco);
         margin-top: 20px;
         letter-spacing: 2px;
+        text-shadow: 0 0 10px var(--morado);
       }
 
       @keyframes spin {
@@ -87,7 +92,7 @@
         }
       }
 
-      /* Efecto de partículas */
+      /* Efecto de partículas mejorado */
       #particles-js {
         position: fixed;
         width: 100%;
@@ -187,6 +192,11 @@
         font-size: 2.5rem;
         color: var(--blanco);
         position: relative;
+        background: linear-gradient(to right, var(--morado), var(--azul));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        letter-spacing: 2px;
       }
 
       .section-title::after {
@@ -199,6 +209,7 @@
         border-radius: 2px;
       }
 
+      /* Botones mejorados */
       .btn {
         display: inline-block;
         padding: 15px 40px;
@@ -213,7 +224,6 @@
         text-transform: uppercase;
         position: relative;
         overflow: hidden;
-        cursor: pointer;
       }
 
       .btn-primary {
@@ -227,6 +237,7 @@
         background-color: transparent;
         color: var(--morado);
         box-shadow: 0 0 20px rgba(161, 79, 227, 0.8);
+        transform: translateY(-3px);
       }
 
       .btn-primary::before {
@@ -347,31 +358,39 @@
       }
 
       .hero-content {
-        max-width: 800px;
+        max-width: 100%;
+        width: fit-content;
         margin: 0 auto;
+        padding: 0 20px;
         position: relative;
         z-index: 2;
+        text-align: center;
       }
 
       .hero h2 {
         font-family: "Bebas Neue", sans-serif;
         font-size: 12rem;
-        letter-spacing: 13px;
+        letter-spacing: 12.5px;
+        display: inline-block;
+        margin-left: 12.5px;
+        margin-right: -12.5px;
+        word-spacing: 0;
         line-height: 1;
-        text-transform: uppercase;
         margin-bottom: 10px;
         background: linear-gradient(to right, var(--morado), var(--azul));
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
+        text-transform: uppercase;
       }
 
       .hero p {
         font-family: "Bebas Neue", sans-serif;
-        font-size: 5.5rem;
-        letter-spacing: 15px;
+        font-size: 4.5rem;
+        letter-spacing: 5.5px;
+        line-height: 1.1;
         margin-top: 0;
-        margin-bottom: 30px;
+        margin-bottom: 35px;
         color: var(--blanco);
       }
 
@@ -388,12 +407,20 @@
 
       .about-img {
         flex: 1;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
       }
 
       .about-img img {
         width: 100%;
         border-radius: 10px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: transform 0.5s ease;
+      }
+
+      .about-img:hover img {
+        transform: scale(1.05);
       }
 
       .about-text {
@@ -410,23 +437,32 @@
         margin-bottom: 15px;
       }
 
+      /* Iconos de redes sociales mejorados - MODIFICADO PARA ELIMINAR CÍRCULO Y LÍNEA */
       .social-links {
         margin-top: 30px;
+        display: flex;
+        gap: 25px;
       }
 
       .social-links a {
-        display: inline-block;
-        margin-right: 15px;
         color: var(--texto);
         font-size: 2rem;
-        transition: color 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        text-decoration: none;
       }
 
       .social-links a:hover {
         color: var(--morado);
+        transform: translateY(-5px) scale(1.2);
+        text-shadow: 0 0 10px var(--morado), 0 0 20px var(--morado);
       }
 
-      /* Skills Section */
+      .social-links a i {
+        transition: all 0.3s ease;
+      }
+
+      /* Skills Section con efecto de resorte */
       .skills-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -438,7 +474,7 @@
         padding: 30px;
         border-radius: 10px;
         text-align: center;
-        transition: all 0.5s ease;
+        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         position: relative;
         overflow: hidden;
       }
@@ -490,8 +526,7 @@
         border-radius: 5px;
         position: relative;
         width: 0;
-        /* Inicialmente en 0 */
-        transition: width 2s ease-in-out;
+        transition: width 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       }
 
       /* Punto en el extremo de la barra */
@@ -559,23 +594,37 @@
         position: relative;
         border-radius: 10px;
         overflow: hidden;
-        transition: all 0.3s ease;
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         background: var(--fondo-claro);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        perspective: 1000px;
       }
 
       .project-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(161, 79, 227, 0.3);
+        transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+        box-shadow: 0 20px 40px rgba(161, 79, 227, 0.4);
+      }
+
+      /* Efecto de zoom en la imagen al pasar el cursor */
+      .project-item img,
+      .project-item video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+
+      .project-item:hover img,
+      .project-item:hover video {
+        transform: scale(1.1);
       }
 
       /* Vertical Videos (9:16 aspect ratio) */
       .vertical-video {
         aspect-ratio: 9/16;
         max-width: 400px;
-        /*limitar el ancho */
         margin: 0 auto;
-        /* Centrar las cajas */
       }
 
       /* Horizontal Videos (16:9 aspect ratio) */
@@ -593,18 +642,11 @@
         aspect-ratio: 1/1;
       }
 
-      .project-item img,
-      .project-item video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-
       .video-thumbnail {
         position: relative;
         width: 100%;
         height: 100%;
+        overflow: hidden;
       }
 
       .video-thumbnail img {
@@ -621,13 +663,14 @@
         color: white;
         font-size: 3rem;
         opacity: 0.8;
-        transition: all 0.3s;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       }
 
       .project-item:hover .play-icon {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1.1);
+        transform: translate(-50%, -50%) scale(1.2);
+        text-shadow: 0 0 20px rgba(161, 79, 227, 0.8);
       }
 
       .project-item-overlay {
@@ -643,11 +686,13 @@
         );
         color: white;
         opacity: 0;
-        transition: opacity 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transform: translateY(20px);
       }
 
       .project-item:hover .project-item-overlay {
         opacity: 1;
+        transform: translateY(0);
       }
 
       .project-item-title {
@@ -687,10 +732,15 @@
 
       .contact-info i {
         margin-right: 15px;
-        color: var(--morado);
         font-size: 1.5rem;
         width: 25px;
         text-align: center;
+        color: var(--morado);
+        transition: color 0.3s ease;
+      }
+
+      .contact-info i:hover {
+        color: var(--rosado);
       }
 
       .contact-social {
@@ -698,20 +748,23 @@
       }
 
       .contact-social a {
-        display: inline-block;
-        margin-right: 15px;
         color: var(--texto);
         font-size: 2rem;
-        transition: color 0.3s ease;
+        margin-right: 15px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        display: inline-block; 
+      }
+
+      /* Efecto hover (igual que en "Sobre mí" y footer) */
+      .contact-social a:hover {
+        color: var(--morado);
+        transform: translateY(-5px) scale(1.2); /* Rebote + agrandamiento */
+        text-shadow: 0 0 10px var(--morado), 0 0 20px var(--morado); /* Sombra neón morada */
       }
 
       .contact-social a i {
         font-size: 2rem !important;
-        margin-right: 25px;
-      }
-
-      .contact-social a:hover {
-        color: var(--morado);
+        transition: all 0.3s ease;
       }
 
       .form-group {
@@ -734,6 +787,7 @@
       .form-group textarea:focus {
         outline: none;
         border-color: var(--morado);
+        box-shadow: 0 0 10px rgba(161, 79, 227, 0.3);
       }
 
       .form-group textarea {
@@ -755,14 +809,16 @@
       }
 
       .footer-logo h3 {
+        font-family: "Bebas Neue", sans-serif;
+        text-transform: uppercase;
+        font-weight: 700;
         font-size: 1.8rem;
-        margin-bottom: 15px;
         background: linear-gradient(to right, var(--morado), var(--azul));
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
+        letter-spacing: 1px;
       }
-
       .footer-links h4,
       .footer-social h4 {
         font-size: 1.3rem;
@@ -788,19 +844,27 @@
         color: var(--morado);
       }
 
+      /* Iconos de redes sociales en footer - MODIFICADO PARA ELIMINAR CÍRCULO */
       .social-icons {
         display: flex;
-        gap: 15px;
+        gap: 25px;
       }
 
       .social-icons a {
         color: var(--texto);
         font-size: 2rem;
-        transition: color 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-decoration: none;
+      }
+
+      .social-icons a i {
+        transition: all 0.3s ease;
       }
 
       .social-icons a:hover {
         color: var(--morado);
+        transform: translateY(-5px) scale(1.2);
+        text-shadow: 0 0 10px var(--morado), 0 0 20px var(--morado);
       }
 
       .footer-bottom {
@@ -874,6 +938,8 @@
         max-height: 80vh;
         display: block;
         margin: 0 auto;
+        border-radius: 10px;
+        box-shadow: 0 0 30px rgba(161, 79, 227, 0.5);
       }
 
       .lightbox-close {
@@ -895,6 +961,66 @@
         text-align: center;
         margin-top: 15px;
         font-size: 1.2rem;
+      }
+
+      /* Botones de descarga */
+      .download-buttons {
+        display: flex;
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      .download-btn {
+        display: inline-block;
+        padding: 12px 30px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-align: center;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid var(--morado);
+        color: var(--blanco);
+        background-color: var(--morado);
+        box-shadow: 0 0 10px rgba(161, 79, 227, 0.5);
+      }
+
+      .download-btn:hover {
+        background-color: transparent;
+        color: var(--morado);
+        box-shadow: 0 0 20px rgba(161, 79, 227, 0.8);
+        transform: translateY(-3px);
+      }
+
+      .download-btn i {
+        margin-right: 10px;
+        transition: transform 0.3s ease;
+      }
+
+      .download-btn:hover i {
+        transform: scale(1.2);
+      }
+
+      /* Iconos de información de contacto */
+      .contact-info i {
+        color: var(--morado);
+        text-shadow: 0 0 5px rgba(161, 79, 227, 0.5);
+        transition: color 0.3s ease;
+      }
+
+      /* Efecto NEON al pasar el mouse */
+      .contact-info i:hover,
+      .contact-social a:hover i,
+      .social-links a:hover i,
+      .social-icons a:hover i {
+        color: var(--rosado);
+        text-shadow: 0 0 10px var(--rosado), 0 0 20px var(--rosado),
+          0 0 30px var(--rosado);
       }
 
       /* Responsive Design */
@@ -931,6 +1057,11 @@
 
         .projects-grid {
           grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+
+        .download-buttons {
+          flex-direction: column;
+          gap: 15px;
         }
       }
 
@@ -983,11 +1114,19 @@
         .projects-section-title {
           font-size: 1.5rem;
         }
+
+        .social-links a,
+        .contact-social a,
+        .social-icons a {
+          font-size: 1.5rem;
+        }
       }
     </style>
   </head>
 
   <body>
+    <!-- Eliminado el cursor personalizado -->
+
     <!-- Preloader -->
     <div class="preloader">
       <div class="preloader-content">
@@ -1049,7 +1188,7 @@
         <div class="container">
           <div class="hero-content">
             <h2>PORTAFOLIO<br /></h2>
-            <p>EDITORA DE VIDEO</p>
+            <p>EDITORA DE VIDEO & MOTION DESIGNER</p>
             <a href="#proyectos" class="btn btn-primary">VER MIS PROYECTOS</a>
           </div>
         </div>
@@ -1066,16 +1205,20 @@
             <div class="about-text">
               <h3>¡Hola! Soy Alexandra</h3>
               <p>
-                Editora de video en formación, con enfoque en edición, motion
-                graphics y storytelling visual. Me apasiona transformar ideas en
-                piezas creativas que conecten con la audiencia. Siempre estoy
-                abierta a nuevos proyectos, colaboraciones y desafíos.
+                <strong>Editora de Video & Motion Designer</strong> con 1 año de
+                experiencia como freelance en proyectos de edición, motion
+                graphics y storytelling visual. Me caracterizo por mi
+                creatividad, adaptabilidad y enfoque narrativo, transformando
+                ideas en piezas audiovisuales
+                <strong>que generan engagement</strong>. Siempre abierta a
+                colaboraciones y desafíos creativos, aportando dedicación y un
+                <strong>enfoque fresco</strong> en cada proyecto.
               </p>
 
               <p>🎓 <strong>Formación:</strong></p>
               <ul>
                 <li>
-                  Estudiante de Animación Digital en Toulouse Lautrec (sexto
+                  Estudiante de Animación Digital en Toulouse Lautrec (último
                   ciclo)
                 </li>
                 <li>Curso de Diseño y Desarrollo Web en IDAT</li>
@@ -1085,16 +1228,36 @@
                 </li>
               </ul>
 
+              <!-- Botones de descarga añadidos aquí -->
+              <div class="download-buttons">
+                <a
+                  href="downloads/CV_Alexandra_Vargas.pdf"
+                  class="download-btn"
+                  download="CV_Alexandra_Vargas.pdf"
+                >
+                  <i class="fas fa-download"></i> Descargar CV
+                </a>
+                <a
+                  href="downloads/CERCURDIP_DESARROLLO_Y_DISEÑO_WEB_ALEXANDRA_VARGAS.pdf"
+                  class="download-btn"
+                  download="CERCURDIP_DESARROLLO_Y_DISEÑO_WEB_ALEXANDRA_VARGAS.pdf"
+                >
+                  <i class="fas fa-file-archive"></i> Descargar Certificados
+                </a>
+              </div>
+
               <div class="social-links">
-                <a href="https://www.instagram.com/ale.xayumi/"
+                <a href="https://www.instagram.com/ale.xayumi/" target="_blank"
                   ><i class="fab fa-instagram"></i
                 ></a>
                 <a
                   href="https://www.linkedin.com/in/alexandra-vargas-567643276/"
+                  target="_blank"
                   ><i class="fab fa-linkedin"></i
                 ></a>
                 <a
                   href="https://www.youtube.com/channel/UC_qWAfZlGvqGQaLZ1Mxf3ww"
+                  target="_blank"
                   ><i class="fab fa-youtube"></i
                 ></a>
               </div>
@@ -1483,15 +1646,17 @@
               </p>
               <p><i class="fas fa-map-marker-alt"></i> Lima, Perú</p>
               <div class="contact-social">
-                <a href="https://www.instagram.com/ale.xayumi/"
+                <a href="https://www.instagram.com/ale.xayumi/" target="_blank"
                   ><i class="fab fa-instagram"></i
                 ></a>
                 <a
                   href="https://www.linkedin.com/in/alexandra-vargas-567643276/"
+                  target="_blank"
                   ><i class="fab fa-linkedin"></i
                 ></a>
                 <a
                   href="https://www.youtube.com/channel/UC_qWAfZlGvqGQaLZ1Mxf3ww"
+                  target="_blank"
                   ><i class="fab fa-youtube"></i
                 ></a>
               </div>
@@ -1523,7 +1688,7 @@
         <div class="footer-content">
           <div class="footer-logo">
             <h3>Alexandra Vargas</h3>
-            <p>Editora de Video</p>
+            <p>Editora de Video & Motion Designer</p>
           </div>
           <div class="footer-links">
             <h4>Enlaces Rápidos</h4>
@@ -1538,13 +1703,17 @@
           <div class="footer-social">
             <h4>Sígueme</h4>
             <div class="social-icons">
-              <a href="https://www.instagram.com/ale.xayumi/"
+              <a href="https://www.instagram.com/ale.xayumi/" target="_blank"
                 ><i class="fab fa-instagram"></i
               ></a>
-              <a href="https://www.linkedin.com/in/alexandra-vargas-567643276/"
+              <a
+                href="https://www.linkedin.com/in/alexandra-vargas-567643276/"
+                target="_blank"
                 ><i class="fab fa-linkedin"></i
               ></a>
-              <a href="https://www.youtube.com/channel/UC_qWAfZlGvqGQaLZ1Mxf3ww"
+              <a
+                href="https://www.youtube.com/channel/UC_qWAfZlGvqGQaLZ1Mxf3ww"
+                target="_blank"
                 ><i class="fab fa-youtube"></i
               ></a>
             </div>
@@ -1558,6 +1727,8 @@
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
+      // Eliminado todo el código relacionado con el cursor personalizado
+
       // Preloader
       window.addEventListener("load", function () {
         const preloader = document.querySelector(".preloader");
