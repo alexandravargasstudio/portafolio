@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Media Creator - Alexandra Vargas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
     <style>
-        /* ESTILOS CSS ACTUALIZADOS */
         :root {
             --turquesa: #41EAD4;
             --limon: #FCFF12;
@@ -34,13 +36,20 @@
             overflow-x: hidden;
         }
 
-        /* Tipografías */
-        h1, h2, h3, h4, .logo, .btn, .nav-link, .hero h2, .hero p, .section-title, .projects-section-title {
+        h1,
+        h2,
+        h3,
+        h4,
+        .logo,
+        .btn,
+        .nav-link,
+        .hero h2,
+        .hero p,
+        .section-title {
             font-family: "Poppins", sans-serif;
             font-weight: 600;
         }
 
-        /* Preloader */
         .preloader {
             position: fixed;
             top: 0;
@@ -71,16 +80,6 @@
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto 20px;
-            box-shadow: 0 0 20px var(--turquesa);
-        }
-
-        .preloader h3 {
-            font-family: "Poppins", sans-serif;
-            font-size: 2rem;
-            color: var(--texto);
-            margin-top: 20px;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px var(--turquesa);
         }
 
         @keyframes spin {
@@ -89,7 +88,6 @@
             }
         }
 
-        /* Efecto de partículas mejorado */
         #particles-js {
             position: fixed;
             width: 100%;
@@ -97,10 +95,9 @@
             top: 0;
             left: 0;
             z-index: -1;
-            background-color: #000000; /* Fondo negro 100% */
+            background-color: #000000;
         }
 
-        /* Elementos flotantes - CORREGIDOS */
         .floating-elements {
             position: fixed;
             top: 0;
@@ -115,8 +112,8 @@
         .floating-element {
             position: absolute;
             border-radius: 50%;
-            filter: blur(20px); /* REDUCIDO DE 60px A 20px */
-            opacity: 0.1; /* REDUCIDO DE 0.2 A 0.1 */
+            filter: blur(20px);
+            opacity: 0.1;
             animation: float 15s infinite linear;
             background: radial-gradient(circle, var(--turquesa) 0%, transparent 70%);
         }
@@ -125,12 +122,12 @@
             0% {
                 transform: translateY(0) rotate(0deg);
             }
+
             100% {
                 transform: translateY(-1000px) rotate(720deg);
             }
         }
 
-        /* Palabras flotantes en el hero */
         .floating-words {
             position: absolute;
             top: 0;
@@ -149,13 +146,13 @@
             color: var(--turquesa);
             opacity: 0.3;
             animation: float-word 20s infinite linear;
-            text-shadow: 0 0 10px rgba(65, 234, 212, 0.5);
         }
 
         @keyframes float-word {
             0% {
                 transform: translateY(100vh) rotate(0deg);
             }
+
             100% {
                 transform: translateY(-100px) rotate(360deg);
             }
@@ -163,7 +160,7 @@
 
         .container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -178,8 +175,6 @@
             text-align: center;
             margin-bottom: 50px;
             font-size: 2.5rem;
-            color: var(--texto);
-            position: relative;
             background: linear-gradient(to right, var(--turquesa), var(--limon));
             -webkit-background-clip: text;
             background-clip: text;
@@ -197,7 +192,6 @@
             border-radius: 2px;
         }
 
-        /* Botones mejorados */
         .btn {
             display: inline-block;
             padding: 15px 40px;
@@ -205,61 +199,23 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            text-align: center;
-            font-family: "Poppins", sans-serif;
             font-size: 1.3rem;
             letter-spacing: 1px;
             text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
         }
 
         .btn-primary {
             background-color: var(--turquesa);
             color: var(--negro);
             border: 2px solid var(--turquesa);
-            box-shadow: 0 0 10px rgba(65, 234, 212, 0.5);
         }
 
         .btn-primary:hover {
             background-color: transparent;
             color: var(--turquesa);
-            box-shadow: 0 0 20px rgba(65, 234, 212, 0.8);
             transform: translateY(-3px);
         }
 
-        .btn-primary::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.2),
-                transparent
-            );
-            transition: 0.5s;
-        }
-
-        .btn-primary:hover::before {
-            left: 100%;
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--texto);
-            border: 2px solid var(--texto);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--texto);
-            color: var(--fondo);
-        }
-
-        /* Header */
         .header {
             position: fixed;
             top: 0;
@@ -274,15 +230,11 @@
 
         .header.scrolled {
             padding: 15px 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            font-family: "Poppins", sans-serif;
-            color: var(--texto);
-            text-decoration: none;
             background: linear-gradient(to right, var(--turquesa), var(--limon));
             -webkit-background-clip: text;
             background-clip: text;
@@ -299,9 +251,7 @@
         }
 
         .nav-link {
-            font-family: "Poppins", sans-serif;
             font-size: 1.3rem;
-            letter-spacing: 1px;
             color: var(--texto);
             text-decoration: none;
             transition: color 0.3s ease;
@@ -335,76 +285,38 @@
             align-items: center;
         }
 
-        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
-            color: var(--texto);
             text-align: center;
-            position: relative;
         }
 
         .hero-content {
             max-width: 100%;
-            width: fit-content;
             margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 2;
-            text-align: center;
         }
 
         .hero h2 {
-            font-family: "Poppins", sans-serif;
             font-size: 6rem;
             letter-spacing: 8px;
-            display: inline-block;
-            margin-left: 8px;
-            margin-right: -8px;
-            word-spacing: 0;
-            line-height: 1;
-            margin-bottom: 20px;
             background: linear-gradient(to right, var(--turquesa), var(--limon));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             text-transform: uppercase;
-        }
-
-        .hero-tagline {
-            font-family: "Inter", sans-serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            letter-spacing: 1px;
-            line-height: 1.4;
-            margin-top: 0;
-            margin-bottom: 40px;
-            color: var(--texto-secundario);
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-bottom: 20px;
         }
 
         .hero p {
-            font-family: "Poppins", sans-serif;
             font-size: 2.5rem;
             letter-spacing: 3px;
-            line-height: 1.1;
-            margin-top: 0;
             margin-bottom: 35px;
             color: var(--texto);
         }
 
-        /* Tabla de Contenidos - ESTILO REFERENCIA */
         .table-of-contents {
             background-color: var(--fondo-claro);
-            padding: 80px 0;
-        }
-
-        .toc-container {
-            max-width: 1000px;
-            margin: 0 auto;
         }
 
         .toc-grid {
@@ -433,28 +345,6 @@
             text-align: center;
             transition: all 0.4s ease;
             border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .toc-item::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(65, 234, 212, 0.1),
-                transparent
-            );
-            transition: 0.5s;
-        }
-
-        .toc-item:hover::before {
-            left: 100%;
         }
 
         .toc-item:hover {
@@ -467,18 +357,14 @@
             font-size: 3rem;
             font-weight: 700;
             color: var(--turquesa);
-            margin-bottom: 15px;
             display: block;
-            font-family: "Poppins", sans-serif;
         }
 
         .toc-title {
             font-size: 1.8rem;
-            margin-bottom: 15px;
+            margin: 15px 0;
             color: var(--texto);
-            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .toc-btn {
@@ -491,20 +377,15 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            font-family: "Poppins", sans-serif;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 10px;
         }
 
         .toc-btn:hover {
             background-color: var(--turquesa);
             color: var(--negro);
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(65, 234, 212, 0.4);
         }
 
-        /* About Section */
         .about {
             background-color: var(--fondo-claro);
         }
@@ -517,15 +398,13 @@
 
         .about-img {
             flex: 1;
-            position: relative;
-            overflow: hidden;
             border-radius: 10px;
+            overflow: hidden;
         }
 
         .about-img img {
             width: 100%;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: transform 0.5s ease;
         }
 
@@ -558,37 +437,6 @@
             color: var(--texto-secundario);
         }
 
-        /* Herramientas clave */
-        .tools-section {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: rgba(65, 234, 212, 0.1);
-            border-radius: 10px;
-            border-left: 4px solid var(--turquesa);
-        }
-
-        .tools-section h4 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--turquesa);
-        }
-
-        .tools-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .tool-tag {
-            background-color: rgba(65, 234, 212, 0.2);
-            color: var(--texto);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(65, 234, 212, 0.3);
-        }
-
-        /* Iconos de redes sociales mejorados */
         .social-links {
             margin-top: 30px;
             display: flex;
@@ -598,22 +446,14 @@
         .social-links a {
             color: var(--texto);
             font-size: 2rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            text-decoration: none;
+            transition: all 0.4s ease;
         }
 
         .social-links a:hover {
             color: var(--turquesa);
             transform: translateY(-5px) scale(1.2);
-            text-shadow: 0 0 10px var(--turquesa), 0 0 20px var(--turquesa);
         }
 
-        .social-links a i {
-            transition: all 0.3s ease;
-        }
-
-        /* Skills Section con efecto de resorte */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -626,34 +466,11 @@
             border-radius: 10px;
             text-align: center;
             transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
         }
 
         .skill-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 30px rgba(65, 234, 212, 0.3);
-        }
-
-        /* Efecto de brillo al pasar el cursor */
-        .skill-item::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.1),
-                transparent
-            );
-            transition: 0.5s;
-        }
-
-        .skill-item:hover::before {
-            left: 100%;
         }
 
         .skill-icon {
@@ -669,18 +486,15 @@
             border-radius: 5px;
             margin: 15px 0;
             overflow: hidden;
-            position: relative;
         }
 
         .skill-level {
             height: 100%;
             border-radius: 5px;
-            position: relative;
             width: 0;
             transition: width 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
-        /* Punto en el extremo de la barra */
         .skill-level::after {
             content: "";
             position: absolute;
@@ -691,13 +505,10 @@
             height: 10px;
             border-radius: 50%;
             background-color: var(--texto);
-            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
         }
 
-        .skill-item span {
+        .skill-percent {
             font-weight: 600;
-            display: inline-block;
-            margin-top: 5px;
             color: var(--texto);
         }
 
@@ -706,90 +517,258 @@
             justify-content: space-between;
             margin-top: 5px;
             font-size: 0.9rem;
-            color: var(--texto-secundario);
         }
 
-        /* Soft Skills Section */
-        .soft-skills {
-            margin-top: 60px;
+        /* SOCIAL MEDIA SECTION - DOS BLOQUES IDÉNTICOS */
+        .social-media-section {
+            background: var(--fondo-claro);
+            padding: 100px 0;
         }
 
-        .soft-skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .soft-skill-item {
-            background-color: var(--fondo-claro);
-            padding: 25px;
-            border-radius: 10px;
-            text-align: center;
-            transition: all 0.4s ease;
-            border-left: 4px solid var(--limon);
-        }
-
-        .soft-skill-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(252, 255, 18, 0.2);
-        }
-
-        .soft-skill-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--limon);
-        }
-
-        /* Projects Section - NUEVO DISEÑO MEJORADO */
-        .projects-section {
+        /* Cada bloque: celular a la izquierda + cuadrícula a la derecha */
+        .phone-block {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
             margin-bottom: 80px;
+            flex-wrap: wrap;
         }
 
-        .projects-section-title {
-            font-size: 2rem;
-            color: var(--turquesa);
-            margin-bottom: 30px;
-            text-align: center;
-            font-family: "Poppins", sans-serif;
-            letter-spacing: 2px;
+        .phone-block:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Celular Mockup */
+        .phone-mockup {
+            flex-shrink: 0;
+            width: 320px;
+            max-width: 320px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-frame {
             position: relative;
-            padding-bottom: 15px;
+            width: 100%;
+            background: #1a1a1a;
+            border-radius: 45px;
+            padding: 15px 8px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 0 8px #2a2a2a, 0 0 0 12px #1a1a1a;
         }
 
-        .projects-section-title::after {
-            content: "";
+        .phone-screen {
+            background: #000;
+            border-radius: 35px;
+            overflow: hidden;
+            aspect-ratio: 9 / 19.5;
+            position: relative;
+        }
+
+        .phone-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .phone-notch {
             position: absolute;
-            bottom: 0;
+            top: 12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(to right, var(--turquesa), var(--limon));
-            border-radius: 3px;
+            width: 120px;
+            height: 28px;
+            background: #1a1a1a;
+            border-radius: 20px;
+            z-index: 2;
         }
 
+        /* Cuadrícula de posts - 6 posts (3x2) SIN BORDES */
+        .posts-grid-container {
+            flex: 1;
+            min-width: 450px;
+        }
+
+        .posts-grid-title {
+            font-size: 1.8rem;
+            color: var(--turquesa);
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            background: transparent;
+            padding: 0;
+        }
+
+        .grid-post {
+            aspect-ratio: 1 / 1;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .grid-post img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .grid-post:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(65, 234, 212, 0.4);
+        }
+
+        .grid-post:hover img {
+            transform: scale(1.08);
+        }
+
+        /* GALERÍA DE POSTS - 12 CAJAS */
+        .social-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 60px;
+            padding: 30px 0;
+        }
+
+        @media (max-width: 1200px) {
+            .social-gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .social-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .social-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .gallery-item {
+            background: var(--fondo);
+            overflow: hidden;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+            transition: all 0.45s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(65, 234, 212, 0.32);
+        }
+
+        .post-media {
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .post-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover .post-media img {
+            transform: scale(1.1);
+        }
+
+        .post-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 35%, rgba(10, 10, 10, 0.92) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px 25px;
+            pointer-events: none;
+        }
+
+        .gallery-item:hover .post-overlay {
+            opacity: 1;
+        }
+
+        .post-overlay h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--turquesa);
+        }
+
+        .post-overlay p {
+            font-size: 0.9rem;
+            color: #e8e8e8;
+        }
+
+        @media (max-width: 1000px) {
+            .phone-block {
+                gap: 40px;
+            }
+
+            .phone-mockup {
+                width: 280px;
+            }
+
+            .posts-grid-container {
+                min-width: 380px;
+            }
+
+            .instagram-grid {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .phone-block {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .posts-grid-container {
+                width: 100%;
+            }
+        }
+
+        /* PROJECTS SECTION */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
-            padding: 20px 0;
         }
 
-        /* NUEVO: Distribución 3x3 para videos verticales */
         .vertical-videos-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            padding: 20px 0;
         }
 
-        @media (min-width: 1200px) {
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            }
-            
+        @media (max-width: 992px) {
             .vertical-videos-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .projects-grid,
+            .vertical-videos-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -797,52 +776,35 @@
             position: relative;
             border-radius: 10px;
             overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.5s ease;
             background: var(--fondo-claro);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            perspective: 1000px;
+            cursor: pointer;
         }
 
         .project-item:hover {
-            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+            transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(65, 234, 212, 0.4);
         }
 
-        /* Efecto de zoom en la imagen al pasar el cursor */
-        .project-item img,
-        .project-item video {
+        .project-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
             transition: transform 0.5s ease;
         }
 
-        .project-item:hover img,
-        .project-item:hover video {
+        .project-item:hover img {
             transform: scale(1.1);
         }
 
-        /* Vertical Videos (9:16 aspect ratio) */
         .vertical-video {
             aspect-ratio: 9/16;
             max-width: 400px;
             margin: 0 auto;
         }
 
-        /* Horizontal Videos (16:9 aspect ratio) */
         .horizontal-video {
             aspect-ratio: 16/9;
-        }
-
-        /* Motion Graphics (16:9 aspect ratio) */
-        .motion-video {
-            aspect-ratio: 16/9;
-        }
-
-        /* 3D Images (square aspect ratio) */
-        .modeling-image {
-            aspect-ratio: 1/1;
         }
 
         .video-thumbnail {
@@ -852,28 +814,20 @@
             overflow: hidden;
         }
 
-        .video-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         .play-icon {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: var(--texto);
+            color: white;
             font-size: 3rem;
             opacity: 0.8;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
         }
 
         .project-item:hover .play-icon {
             opacity: 1;
             transform: translate(-50%, -50%) scale(1.2);
-            text-shadow: 0 0 20px rgba(65, 234, 212, 0.8);
         }
 
         .project-item-overlay {
@@ -882,14 +836,9 @@
             left: 0;
             width: 100%;
             padding: 20px;
-            background: linear-gradient(
-                to top,
-                rgba(0, 0, 0, 0.9),
-                transparent
-            );
-            color: var(--texto);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
             opacity: 0;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
             transform: translateY(20px);
         }
 
@@ -899,195 +848,17 @@
         }
 
         .project-item-title {
-            font-size: 1.5rem;
-            color: var(--texto);
+            font-size: 1.3rem;
+            color: var(--turquesa);
             margin-bottom: 5px;
-            font-weight: 600;
         }
 
         .project-item-desc {
-            color: var(--texto-secundario);
             font-size: 0.9rem;
-        }
-
-        /* Project details */
-        .project-details {
-            margin-top: 10px;
-            font-size: 0.8rem;
             color: var(--texto-secundario);
         }
 
-        .project-detail-item {
-            margin-bottom: 5px;
-        }
-
-        /* SECCIÓN SOCIAL MEDIA - INCORPORADA Y ADAPTADA */
-        .social-media-section {
-            background: var(--fondo-claro);
-            color: var(--texto);
-            padding: 80px 0;
-            font-family: "Poppins", system-ui, sans-serif;
-        }
-
-        /* ---------- TOP (Mi rol / Plan / Redes) ---------- */
-        .social-media-top {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
-            margin-bottom: 44px;
-        }
-
-        .role-box, .plan-box, .social-box {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(65, 234, 212, 0.1);
-            padding: 22px;
-            border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.45);
-            transition: transform .28s ease, background .28s ease, border-color .28s ease;
-        }
-
-        .role-box:hover, .plan-box:hover, .social-box:hover {
-            transform: translateY(-6px);
-            background: rgba(65, 234, 212, 0.05);
-            border-color: rgba(65, 234, 212, 0.3);
-        }
-
-        .social-media-top h2 {
-            margin: 0 0 10px;
-            color: var(--turquesa);
-            font-size: 1.25rem;
-        }
-
-        .social-media-top p {
-            margin: 0;
-            color: var(--texto-secundario);
-            line-height: 1.6;
-            font-size: .98rem;
-        }
-
-        /* ---------- IMAGEN DEL PLAN ---------- */
-        .plan-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 12px;
-        }
-        .plan-image img {
-            width: 100%;
-            max-width: 460px;
-            border-radius: 14px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-            transition: transform .36s ease, box-shadow .36s ease;
-        }
-        .plan-image img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 14px 35px rgba(65, 234, 212, 0.3);
-        }
-
-        /* ---------- ICONOS REDES ---------- */
-        .icons {
-            display: flex;
-            gap: 16px;
-            margin-top: 14px;
-        }
-        .icons a {
-            color: var(--turquesa);
-            font-size: 1.5rem;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.02);
-            transition: all .18s ease;
-        }
-        .icons a:hover {
-            transform: translateY(-4px);
-            background: rgba(65, 234, 212, 0.1);
-            color: var(--limon);
-            box-shadow: 0 0 15px rgba(65, 234, 212, 0.5);
-        }
-
-        /* ---------- GALERÍA 4 / 3 / 3 ---------- */
-        .post-gallery {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .gallery-row {
-            display: grid;
-            gap: 22px;
-        }
-
-        .row-4 { grid-template-columns: repeat(4, 1fr); }
-        .row-3 { grid-template-columns: repeat(3, 1fr); }
-
-        .post {
-            position: relative;
-            overflow: hidden;
-            border-radius: 14px;
-            background: var(--fondo);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            transition: transform .36s cubic-bezier(.2,.9,.2,1), box-shadow .36s;
-        }
-
-        .post img {
-            width: 100%;
-            height: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            transition: transform .36s ease, filter .36s ease;
-        }
-
-        .post:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 18px 40px rgba(65, 234, 212, 0.4);
-        }
-        .post:hover img {
-            transform: scale(1.06);
-            filter: brightness(.78);
-        }
-
-        /* Overlay */
-        .post-overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(180deg, rgba(8,10,12,0.0) 0%, rgba(6,8,10,0.62) 60%);
-            opacity: 0;
-            transform: translateY(8px);
-            transition: opacity .28s ease, transform .28s ease;
-        }
-        .post:hover .post-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .post-overlay h3 {
-            margin: 0;
-            color: var(--turquesa);
-            font-size: 1.05rem;
-            text-shadow: 0 0 10px rgba(0,0,0,0.8);
-        }
-
-        /* ---------- RESPONSIVE ---------- */
-        @media (max-width: 1200px) {
-            .row-4 { grid-template-columns: repeat(3, 1fr); }
-        }
-        @media (max-width: 960px) {
-            .social-media-top { grid-template-columns: 1fr; }
-            .row-4, .row-3 { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 560px) {
-            .row-4, .row-3 { grid-template-columns: 1fr; }
-            .social-media-section { padding: 36px 6%; }
-        }
-
-        /* Contact Section */
+        /* Contact */
         .contact-content {
             display: flex;
             gap: 50px;
@@ -1115,37 +886,24 @@
             margin-right: 15px;
             font-size: 1.5rem;
             width: 25px;
-            text-align: center;
             color: var(--turquesa);
-            transition: color 0.3s ease;
-        }
-
-        .contact-info i:hover {
-            color: var(--rosa-electrico);
         }
 
         .contact-social {
             margin-top: 40px;
+            display: flex;
+            gap: 20px;
         }
 
         .contact-social a {
             color: var(--texto);
             font-size: 2rem;
-            margin-right: 15px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            display: inline-block; 
+            transition: all 0.4s ease;
         }
 
-        /* Efecto hover (igual que en "Sobre mí" y footer) */
         .contact-social a:hover {
             color: var(--turquesa);
-            transform: translateY(-5px) scale(1.2);
-            text-shadow: 0 0 10px var(--turquesa), 0 0 20px var(--turquesa);
-        }
-
-        .contact-social a i {
-            font-size: 2rem !important;
-            transition: all 0.3s ease;
+            transform: translateY(-5px);
         }
 
         .form-group {
@@ -1160,15 +918,12 @@
             border: 1px solid rgba(65, 234, 212, 0.3);
             border-radius: 5px;
             color: var(--texto);
-            font-family: inherit;
-            transition: border-color 0.3s ease;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: var(--turquesa);
-            box-shadow: 0 0 10px rgba(65, 234, 212, 0.3);
         }
 
         .form-group textarea {
@@ -1176,7 +931,31 @@
             resize: vertical;
         }
 
-        /* Footer */
+        .download-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            border: 2px solid var(--turquesa);
+            color: var(--negro);
+            background-color: var(--turquesa);
+        }
+
+        .download-btn:hover {
+            background-color: transparent;
+            color: var(--turquesa);
+            transform: translateY(-3px);
+        }
+
         .footer {
             background-color: var(--fondo-claro);
             padding: 60px 0 20px;
@@ -1190,20 +969,11 @@
         }
 
         .footer-logo h3 {
-            font-family: "Poppins", sans-serif;
-            text-transform: uppercase;
-            font-weight: 700;
             font-size: 1.8rem;
             background: linear-gradient(to right, var(--turquesa), var(--limon));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: 1px;
-        }
-
-        .footer-logo p {
-            color: var(--texto-secundario);
-            margin-top: 10px;
         }
 
         .footer-links h4,
@@ -1231,27 +1001,20 @@
             color: var(--turquesa);
         }
 
-        /* Iconos de redes sociales en footer */
         .social-icons {
             display: flex;
-            gap: 25px;
+            gap: 20px;
         }
 
         .social-icons a {
             color: var(--texto);
             font-size: 2rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-decoration: none;
-        }
-
-        .social-icons a i {
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .social-icons a:hover {
             color: var(--turquesa);
-            transform: translateY(-5px) scale(1.2);
-            text-shadow: 0 0 10px var(--turquesa), 0 0 20px var(--turquesa);
+            transform: translateY(-5px);
         }
 
         .footer-bottom {
@@ -1261,8 +1024,8 @@
             color: var(--texto-secundario);
         }
 
-        /* Video Modal */
-        .modal {
+        .modal,
+        .pdf-modal {
             display: none;
             position: fixed;
             top: 0;
@@ -1284,145 +1047,15 @@
         .modal-video {
             width: 100%;
             aspect-ratio: 16/9;
-            background-color: #000;
         }
 
         .close-modal {
             position: absolute;
             top: -40px;
             right: 0;
-            color: var(--texto);
+            color: white;
             font-size: 2rem;
             cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .close-modal:hover {
-            color: var(--turquesa);
-        }
-
-        /* Lightbox para imágenes */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .lightbox-image {
-            max-width: 100%;
-            max-height: 80vh;
-            display: block;
-            margin: 0 auto;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(65, 234, 212, 0.5);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: var(--texto);
-            font-size: 2rem;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .lightbox-close:hover {
-            color: var(--turquesa);
-        }
-
-        .lightbox-caption {
-            color: var(--texto);
-            text-align: center;
-            margin-top: 15px;
-            font-size: 1.2rem;
-        }
-
-        /* Botones de descarga */
-        .download-buttons {
-            display: flex;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .download-btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-align: center;
-            font-family: "Poppins", sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid var(--turquesa);
-            color: var(--negro);
-            background-color: var(--turquesa);
-            box-shadow: 0 0 10px rgba(65, 234, 212, 0.5);
-        }
-
-        .download-btn:hover {
-            background-color: transparent;
-            color: var(--turquesa);
-            box-shadow: 0 0 20px rgba(65, 234, 212, 0.8);
-            transform: translateY(-3px);
-        }
-
-        .download-btn i {
-            margin-right: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .download-btn:hover i {
-            transform: scale(1.2);
-        }
-
-        /* Iconos de información de contacto */
-        .contact-info i {
-            color: var(--turquesa);
-            text-shadow: 0 0 5px rgba(65, 234, 212, 0.5);
-            transition: color 0.3s ease;
-        }
-
-        /* Efecto NEON al pasar el mouse */
-        .contact-info i:hover,
-        .contact-social a:hover i,
-        .social-links a:hover i,
-        .social-icons a:hover i {
-            color: var(--rosa-electrico);
-            text-shadow: 0 0 10px var(--rosa-electrico), 0 0 20px var(--rosa-electrico),
-                0 0 30px var(--rosa-electrico);
-        }
-
-        /* PDF Viewer Modal */
-        .pdf-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
         }
 
         .pdf-modal-content {
@@ -1430,8 +1063,6 @@
             height: 90%;
             background-color: var(--fondo-claro);
             border-radius: 10px;
-            overflow: hidden;
-            position: relative;
             display: flex;
             flex-direction: column;
         }
@@ -1442,25 +1073,17 @@
             color: var(--negro);
             display: flex;
             justify-content: space-between;
-            align-items: center;
-        }
-
-        .pdf-modal-title {
-            font-size: 1.2rem;
-            font-weight: bold;
         }
 
         .pdf-modal-close {
             background: none;
             border: none;
-            color: var(--negro);
             font-size: 1.5rem;
             cursor: pointer;
         }
 
         .pdf-modal-body {
             flex: 1;
-            padding: 0;
             overflow: auto;
         }
 
@@ -1470,189 +1093,88 @@
             border: none;
         }
 
-        .pdf-download-btn {
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: var(--turquesa);
-            color: var(--negro);
-            border: none;
-            border-radius: 5px;
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.96);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 94%;
+            max-height: 94vh;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: white;
+            font-size: 3rem;
             cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        .pdf-download-btn:hover {
-            background-color: var(--limon);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .hero h2 {
-                font-size: 4rem;
-            }
-
-            .modal-content {
-                width: 90%;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .about-content,
-            .contact-content {
-                flex-direction: column;
-            }
-
-            .about-img,
-            .about-text,
-            .contact-info,
-            .contact-form {
-                width: 100%;
-            }
-
-            .hero h2 {
-                font-size: 3.5rem;
-            }
-
-            .hero p {
-                font-size: 1.5rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
-
-            .vertical-videos-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .download-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
         }
 
         @media (max-width: 768px) {
-            .nav ul {
-                display: none;
-            }
-
             .hero h2 {
                 font-size: 2.5rem;
+                letter-spacing: 4px;
             }
 
             .hero p {
                 font-size: 1.2rem;
             }
 
-            .section-title {
-                font-size: 2rem;
+            .about-content,
+            .contact-content {
+                flex-direction: column;
             }
 
-            section {
-                padding: 60px 0;
-            }
-
-            .modal-content {
-                width: 95%;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .vertical-videos-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero h2 {
-                font-size: 2rem;
-                letter-spacing: 3px;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .close-modal {
-                top: -30px;
-                font-size: 1.5rem;
-            }
-
-            .projects-section-title {
-                font-size: 1.5rem;
-            }
-
-            .social-links a,
-            .contact-social a,
-            .social-icons a {
-                font-size: 1.5rem;
+            .download-buttons {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Preloader -->
     <div class="preloader">
         <div class="preloader-content">
             <div class="preloader-spinner"></div>
             <h3>CARGANDO PORTAFOLIO</h3>
         </div>
     </div>
-
-    <!-- Efectos de fondo -->
     <div id="particles-js"></div>
     <div class="floating-elements"></div>
-
-    <!-- Palabras flotantes en el hero -->
     <div class="floating-words" id="floatingWords"></div>
 
-    <!-- Video Modal para YouTube -->
     <div class="modal" id="videoModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-video">
-                <iframe
-                    id="youtubeVideo"
-                    width="100%"
-                    height="100%"
-                    frameborder="0"
-                    allowfullscreen
-                ></iframe>
-            </div>
+        <div class="modal-content"><span class="close-modal">×</span>
+            <div class="modal-video"><iframe id="youtubeVideo" width="100%" height="100%" frameborder="0"
+                    allowfullscreen></iframe></div>
         </div>
     </div>
-
-    <!-- Lightbox para imágenes -->
-    <div class="lightbox-overlay" id="imageLightbox">
-        <div class="lightbox-content">
-            <span class="lightbox-close">&times;</span>
-            <img class="lightbox-image" id="lightboxImage" src="" alt="" />
-            <div class="lightbox-caption" id="lightboxCaption"></div>
-        </div>
-    </div>
-
-    <!-- PDF Viewer Modal -->
     <div class="pdf-modal" id="pdfModal">
         <div class="pdf-modal-content">
             <div class="pdf-modal-header">
-                <div class="pdf-modal-title" id="pdfModalTitle">Documento PDF</div>
-                <button class="pdf-modal-close">&times;</button>
+                <div id="pdfModalTitle">Documento</div><button class="pdf-modal-close">×</button>
             </div>
-            <div class="pdf-modal-body">
-                <iframe class="pdf-viewer" id="pdfViewer" frameborder="0"></iframe>
-            </div>
-            <div style="padding: 15px; text-align: center; background-color: var(--fondo);">
-                <a id="pdfDownloadLink" class="pdf-download-btn" download>
-                    <i class="fas fa-download"></i> Descargar PDF
-                </a>
-            </div>
+            <div class="pdf-modal-body"><iframe class="pdf-viewer" id="pdfViewer"></iframe></div>
+            <div style="padding:15px;text-align:center"><a id="pdfDownloadLink" class="download-btn"
+                    style="display:inline-block;padding:10px 20px;">Descargar PDF</a></div>
         </div>
+    </div>
+    <div class="lightbox-overlay" id="imageLightbox">
+        <div class="lightbox-content"><span class="lightbox-close">×</span><img class="lightbox-image"
+                id="lightboxImage" src="" alt=""></div>
     </div>
 
     <header class="header">
@@ -1671,658 +1193,419 @@
     </header>
 
     <main>
-        <!-- Sección Inicio-->
         <section id="inicio" class="hero">
             <div class="container">
                 <div class="hero-content">
                     <h2>ALEXANDRA VARGAS</h2>
-                    <p>CONTENT MEDIA CREATOR</p>
-                    
-                    <a href="#contenidos" class="btn btn-primary">EXPLORAR PORTAFOLIO</a>
+                    <p>CONTENT MEDIA CREATOR</p><a href="#contenidos" class="btn btn-primary">EXPLORAR PORTAFOLIO</a>
                 </div>
             </div>
         </section>
 
-        <!-- Sección Tabla de Contenidos - CORREGIDA -->
         <section id="contenidos" class="table-of-contents">
             <div class="container">
                 <h2 class="section-title">Tabla de Contenidos</h2>
-                <div class="toc-container">
-                    <div class="toc-grid">
-                        <!-- 01 SOBRE MÍ -->
-                        <div class="toc-item">
-                            <span class="toc-number">01</span>
-                            <h3 class="toc-title">SOBRE MÍ</h3>
-                            <a href="#sobre-mi" class="toc-btn">Ver Más</a>
-                        </div>
-
-                        <!-- 02 MIS SKILLS -->
-                        <div class="toc-item">
-                            <span class="toc-number">02</span>
-                            <h3 class="toc-title">MIS SKILLS</h3>
-                            <a href="#skills" class="toc-btn">Ver Skills</a>
-                        </div>
-
-                        <!-- 03 SOCIAL MEDIA - CORREGIDO -->
-                        <div class="toc-item">
-                            <span class="toc-number">03</span>
-                            <h3 class="toc-title">SOCIAL MEDIA</h3>
-                            <a href="#social-media" class="toc-btn">Ver Contenido</a>
-                        </div>
-
-                        <!-- 04 VIDEOS VERTICALES - CORREGIDO -->
-                        <div class="toc-item">
-                            <span class="toc-number">04</span>
-                            <h3 class="toc-title">VIDEOS VERTICALES</h3>
-                            <a href="#vertical-videos" class="toc-btn">Ver Videos</a>
-                        </div>
-
-                        <!-- 05 VIDEOS HORIZONTALES - CORREGIDO -->
-                        <div class="toc-item">
-                            <span class="toc-number">05</span>
-                            <h3 class="toc-title">VIDEOS HORIZONTALES</h3>
-                            <a href="#horizontal-videos" class="toc-btn">Ver Videos</a>
-                        </div>
-
-                        <!-- 06 CONTACTO -->
-                        <div class="toc-item">
-                            <span class="toc-number">06</span>
-                            <h3 class="toc-title">CONTACTO</h3>
-                            <a href="#contacto" class="toc-btn">Contactar</a>
-                        </div>
+                <div class="toc-grid">
+                    <div class="toc-item"><span class="toc-number">01</span>
+                        <h3 class="toc-title">SOBRE MÍ</h3><a href="#sobre-mi" class="toc-btn">Ver Más</a>
+                    </div>
+                    <div class="toc-item"><span class="toc-number">02</span>
+                        <h3 class="toc-title">MIS SKILLS</h3><a href="#skills" class="toc-btn">Ver Skills</a>
+                    </div>
+                    <div class="toc-item"><span class="toc-number">03</span>
+                        <h3 class="toc-title">SOCIAL MEDIA</h3><a href="#social-media" class="toc-btn">Ver Contenido</a>
+                    </div>
+                    <div class="toc-item"><span class="toc-number">04</span>
+                        <h3 class="toc-title">VIDEOS VERTICALES</h3><a href="#vertical-videos" class="toc-btn">Ver
+                            Videos</a>
+                    </div>
+                    <div class="toc-item"><span class="toc-number">05</span>
+                        <h3 class="toc-title">VIDEOS HORIZONTALES</h3><a href="#horizontal-videos" class="toc-btn">Ver
+                            Videos</a>
+                    </div>
+                    <div class="toc-item"><span class="toc-number">06</span>
+                        <h3 class="toc-title">CONTACTO</h3><a href="#contacto" class="toc-btn">Contactar</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sección Sobre Mí -->
         <section id="sobre-mi" class="about">
             <div class="container">
                 <h2 class="section-title">Sobre Mí</h2>
                 <div class="about-content">
-                    <div class="about-img">
-                        <img src="img/alex2.png" alt="Alexandra Vargas" />
-                    </div>
+                    <div class="about-img"><img src="img/alex2.png" alt="Alexandra Vargas"></div>
                     <div class="about-text">
                         <h3>¡Hola! Soy Alexandra</h3>
-                        <p>
-                            Soy Content Creator y Motion Designer, egresada de Animación Digital. Me apasiona crear audiovisual content que conecte a las marcas con las personas a través del visual storytelling.
-
-                        </p>
-                        <p>
-                            Tengo experiencia desarrollando contenido para social media, digital campaigns y piezas que fortalecen la brand identity, con enfoque en motion graphics y narrativa visual.
-                            Busco seguir creciendo en proyectos de digital content donde pueda aportar creatividad y seguir desarrollando mis habilidades.
-
-                        </p>
-
+                        <p>Soy Content Creator y Motion Designer, egresada de Animación Digital. Me apasiona crear
+                            contenido audiovisual que conecte marcas con personas.</p>
+                        <p>Tengo experiencia desarrollando contenido para social media, campañas digitales y piezas que
+                            fortalecen la identidad de marca.</p>
                         <p><strong>Formación:</strong></p>
                         <ul>
-                            <li>
-                                Egresada de Animación Digital en Toulouse Lautrec
-                            </li>
-                            <li>Curso de Diseño y Desarrollo Web en IDAT</li>
-                            <li>
-                                Curso de Motion Graphics en IPAD – Instituto Peruano de Arte y Diseño
-                            </li>
+                            <li>Egresada de Animación Digital - Toulouse Lautrec</li>
+                            <li>Curso de Diseño y Desarrollo Web - IDAT</li>
+                            <li>Curso de Motion Graphics - IPAD</li>
                         </ul>
-
-                        <!-- Botones de descarga modificados para abrir el visor PDF -->
-                        <div class="download-buttons">
-                            <a
-                                href="#"
-                                class="download-btn"
-                                onclick="openPdfModal('downloads/CV_Alexandra_Vargas_Gómez.pdf', 'CV - Alexandra Vargas')"
-                            >
-                                <i class="fas fa-download"></i> Ver CV
-                            </a>
-                            <a
-                                href="#"
-                                class="download-btn"
-                                onclick="openPdfModal('downloads/CERCURDIP_DESARROLLO_Y_DISEÑO_WEB_ALEXANDRA_VARGAS.pdf', 'Certificados - Alexandra Vargas')"
-                            >
-                                <i class="fas fa-file-archive"></i> Ver Certificados
-                            </a>
-                        </div>
-
-                        <div class="social-links">
-                            <a href="https://www.instagram.com/ale.xayumi/" target="_blank"
-                                ><i class="fab fa-instagram"></i
-                            ></a>
-                            <a
+                        <div class="download-buttons"><a href="#" class="download-btn"
+                                onclick="openPdfModal('downloads/CV_Alexandra_Vargas_Gómez.pdf', 'CV - Alexandra Vargas')"><i
+                                    class="fas fa-download"></i> Ver CV</a><a href="#" class="download-btn"
+                                onclick="openPdfModal('downloads/CERCURDIP_DESARROLLO_Y_DISEÑO_WEB_ALEXANDRA_VARGAS.pdf', 'Certificados')"><i
+                                    class="fas fa-file-archive"></i> Ver Certificados</a></div>
+                        <div class="social-links"><a href="https://www.instagram.com/ale.xayumi/" target="_blank"><i
+                                    class="fab fa-instagram"></i></a><a
                                 href="https://www.linkedin.com/in/alexandra-mirella-vargas-g%C3%B3mez-32388039a/"
-                                target="_blank"
-                                ><i class="fab fa-linkedin"></i
-                            ></a>
-                            <a
-                                href="https://www.youtube.com/channel/UC_qWAfZlGvqGQaLZ1Mxf3ww"
-                                target="_blank"
-                                ><i class="fab fa-youtube"></i
-                            ></a>
-                        </div>
+                                target="_blank"><i class="fab fa-linkedin"></i></a><a
+                                href="https://www.youtube.com/channel/UC_qWAfZlGvqGQaLZ1Mxf3ww" target="_blank"><i
+                                    class="fab fa-youtube"></i></a></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sección Skills -->
         <section id="skills" class="skills">
             <div class="container">
                 <h2 class="section-title">Mis Skills</h2>
                 <div class="skills-grid">
-                    <!-- After Effects -->
                     <div class="skill-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-film" style="color: #41EAD4; font-size: 3rem"></i>
-                        </div>
+                        <div class="skill-icon"><i class="fas fa-film"></i></div>
                         <h3>After Effects</h3>
                         <div class="skill-bar">
-                            <div
-                                class="skill-level"
-                                style="background-color: #41EAD4"
-                                data-width="95%"
-                            ></div>
+                            <div class="skill-level" style="background:#41EAD4" data-width="95"></div>
                         </div>
-                        <div class="skill-level-label">
-                            <span class="skill-percent">95%</span>
-                        </div>
+                        <div class="skill-level-label"><span class="skill-percent">0%</span></div>
                     </div>
-
-                    <!-- Premiere Pro -->
                     <div class="skill-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-file-video" style="color: #FCFF12; font-size: 3rem"></i>
-                        </div>
+                        <div class="skill-icon"><i class="fas fa-file-video"></i></div>
                         <h3>Premiere Pro</h3>
                         <div class="skill-bar">
-                            <div
-                                class="skill-level"
-                                style="background-color: #FCFF12"
-                                data-width="90%"
-                            ></div>
+                            <div class="skill-level" style="background:#FCFF12" data-width="90"></div>
                         </div>
-                        <div class="skill-level-label">
-                            <span class="skill-percent">90%</span>
-                        </div>
+                        <div class="skill-level-label"><span class="skill-percent">0%</span></div>
                     </div>
-
-                    <!-- Photoshop -->
                     <div class="skill-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-paint-brush" style="color: #FF206E; font-size: 3rem"></i>
-                        </div>
+                        <div class="skill-icon"><i class="fas fa-paint-brush"></i></div>
                         <h3>Photoshop</h3>
                         <div class="skill-bar">
-                            <div
-                                class="skill-level"
-                                style="background-color: #FF206E"
-                                data-width="85%"
-                            ></div>
+                            <div class="skill-level" style="background:#FF206E" data-width="85"></div>
                         </div>
-                        <div class="skill-level-label">
-                            <span class="skill-percent">85%</span>
-                        </div>
+                        <div class="skill-level-label"><span class="skill-percent">0%</span></div>
                     </div>
-
-                    <!-- Illustrator -->
                     <div class="skill-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-pen-nib" style="color: #41EAD4; font-size: 3rem"></i>
-                        </div>
+                        <div class="skill-icon"><i class="fas fa-pen-nib"></i></div>
                         <h3>Illustrator</h3>
                         <div class="skill-bar">
-                            <div
-                                class="skill-level"
-                                style="background-color: #41EAD4"
-                                data-width="80%"
-                            ></div>
+                            <div class="skill-level" style="background:#41EAD4" data-width="80"></div>
                         </div>
-                        <div class="skill-level-label">
-                            <span class="skill-percent">80%</span>
-                        </div>
+                        <div class="skill-level-label"><span class="skill-percent">0%</span></div>
                     </div>
-
-                    <!-- Figma -->
                     <div class="skill-item">
-                        <div class="skill-icon">
-                            <i class="fab fa-figma" style="color: #FCFF12; font-size: 3rem"></i>
-                        </div>
+                        <div class="skill-icon"><i class="fab fa-figma"></i></div>
                         <h3>Figma</h3>
                         <div class="skill-bar">
-                            <div
-                                class="skill-level"
-                                style="background-color: #FCFF12"
-                                data-width="75%"
-                            ></div>
+                            <div class="skill-level" style="background:#FCFF12" data-width="75"></div>
                         </div>
-                        <div class="skill-level-label">
-                            <span class="skill-percent">75%</span>
-                        </div>
+                        <div class="skill-level-label"><span class="skill-percent">0%</span></div>
                     </div>
-
-                    <!-- Blender -->
                     <div class="skill-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-cube" style="color: #FF206E; font-size: 3rem"></i>
-                        </div>
+                        <div class="skill-icon"><i class="fas fa-cube"></i></div>
                         <h3>Blender</h3>
                         <div class="skill-bar">
-                            <div
-                                class="skill-level"
-                                style="background-color: #FF206E"
-                                data-width="70%"
-                            ></div>
+                            <div class="skill-level" style="background:#FF206E" data-width="70"></div>
                         </div>
-                        <div class="skill-level-label">
-                            <span class="skill-percent">70%</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Soft Skills Section -->
-                <div class="soft-skills">
-                    <h3 class="projects-section-title">Soft Skills</h3>
-                    <div class="soft-skills-grid">
-                        <div class="soft-skill-item">
-                            <div class="soft-skill-icon">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <h4>Pensamiento creativo y estratégico</h4>
-                        </div>
-                        <div class="soft-skill-item">
-                            <div class="soft-skill-icon">
-                                <i class="fas fa-book-open"></i>
-                            </div>
-                            <h4>Storytelling visual</h4>
-                        </div>
-                        <div class="soft-skill-item">
-                            <div class="soft-skill-icon">
-                                <i class="fas fa-comments"></i>
-                            </div>
-                            <h4>Comunicación efectiva</h4>
-                        </div>
-                        <div class="soft-skill-item">
-                            <div class="soft-skill-icon">
-                                <i class="fas fa-tasks"></i>
-                            </div>
-                            <h4>Organización y gestión del tiempo</h4>
-                        </div>
-                        <div class="soft-skill-item">
-                            <div class="soft-skill-icon">
-                                <i class="fas fa-sync-alt"></i>
-                            </div>
-                            <h4>Adaptabilidad e innovación</h4>
-                        </div>
-                        <div class="soft-skill-item">
-                            <div class="soft-skill-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <h4>Trabajo en equipo</h4>
-                        </div>
-                        <div class="soft-skill-item">
-                            <div class="soft-skill-icon">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <h4>Resolución de problemas</h4>
-                        </div>
-                        <div class="soft-skill-item">
-                            <div class="soft-skill-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <h4>Análisis de resultados</h4>
-                        </div>
+                        <div class="skill-level-label"><span class="skill-percent">0%</span></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN SOCIAL MEDIA - TU CÓDIGO ADAPTADO -->
+        <!-- SOCIAL MEDIA SECTION - DOS BLOQUES IDÉNTICOS -->
         <section id="social-media" class="social-media-section">
             <div class="container">
-                <h2 class="section-title">Social Media</h2>
-                
-                <!-- TOP: Mi rol / Plan / Redes -->
-                <div class="social-media-top">
-                    <div class="role-box">
-                        <h2>Mi Rol</h2>
-                        <p>Edición, composición visual y dirección de arte, cuidando la coherencia estética entre formatos y plataformas.</p>
-                    </div>
+                <h2 class="section-title">Social Media Design</h2>
 
-                    <div class="plan-box">
-                        <h2>CLIENTE</h2>
-                        <div class="plan-image">
-                            <img src="img/POTLOGO.png" alt="Customer Journey Plan">
+                <!-- BLOQUE 1: Celular + 6 posts -->
+                <div class="phone-block">
+                    <div class="phone-mockup">
+                        <div class="phone-frame">
+                            <div class="phone-notch"></div>
+                            <div class="phone-screen">
+                                <img src="img/HISTYORIA_SALUD MENTAL.png" alt="Post en celular">
+                            </div>
                         </div>
                     </div>
-
-                    <div class="social-box">
-                        <h2>Redes</h2>
-                        <div class="icons">
-                            <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                            <a href="#" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <div class="posts-grid-container">
+                        <h3 class="posts-grid-title">✨ PSCICOLOGIA ✨</h3>
+                        <div class="instagram-grid">
+                            <div class="grid-post"><img src="img/1.png" alt="Post 1"></div>
+                            <div class="grid-post"><img src="img/2.png" alt="Post 2"></div>
+                            <div class="grid-post"><img src="img/3.png" alt="Post 3"></div>
+                            <div class="grid-post"><img src="img/6.png" alt="Post 4"></div>
+                            <div class="grid-post"><img src="img/5.png" alt="Post 5"></div>
+                            <div class="grid-post"><img src="img/4.png" alt="Post 6"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- GALERÍA (4 / 3 / 3) -->
-                <div class="post-gallery">
-                    <!-- Fila 1: 4 posts -->
-                    <div class="gallery-row row-4">
-                        <article class="post"><img src="img/7.png" alt="Post 1"><div class="post-overlay"><h3>Post 1</h3></div></article>
-                        <article class="post"><img src="img/8.png"alt="Post 2"><div class="post-overlay"><h3>Post 2</h3></div></article>
-                        <article class="post"><img src="img/9.png" alt="Post 3"><div class="post-overlay"><h3>Post 3</h3></div></article>
-                        <article class="post"><img src="img/10.png" alt="Post 4"><div class="post-overlay"><h3>Post 4</h3></div></article>
+                <!-- BLOQUE 2: Celular + 6 posts (otro bloque igual) -->
+                <div class="phone-block">
+                    <div class="phone-mockup">
+                        <div class="phone-frame">
+                            <div class="phone-notch"></div>
+                            <div class="phone-screen">
+                                <img src="img/belleza_07.png" alt="Post en celular 2">
+                            </div>
+                        </div>
                     </div>
-
-                    <!-- Fila 2: 3 posts -->
-                    <div class="gallery-row row-3">
-                        <article class="post"><img src="img/1.png"alt="Post 5"><div class="post-overlay"><h3>Post 5</h3></div></article>
-                        <article class="post"><img src="img/3.png"alt="Post 6"><div class="post-overlay"><h3>Post 6</h3></div></article>
-                        <article class="post"><img src="img/2.png" alt="Post 7"><div class="post-overlay"><h3>Post 7</h3></div></article>
-                    </div>
-
-                    <!-- Fila 3: 3 posts -->
-                    <div class="gallery-row row-3">
-                        <article class="post"><img src="img/4.png"alt="Post 8"><div class="post-overlay"><h3>Post 8</h3></div></article>
-                        <article class="post"><img src="img/5.png" alt="Post 9"><div class="post-overlay"><h3>Post9</h3></div></article>
-                        <article class="post"><img src="img/6.png" alt="Post 10"><div class="post-overlay"><h3>Post 10</h3></div></article>
+                    <div class="posts-grid-container">
+                        <h3 class="posts-grid-title">✨ BELLEZA ✨</h3>
+                        <div class="instagram-grid">
+                            <div class="grid-post"><img src="img/belleza_01.png" alt="Post 7"></div>
+                            <div class="grid-post"><img src="img/belleza_02.png" alt="Post 8"></div>
+                            <div class="grid-post"><img src="img/belleza_03.png" alt="Post 9"></div>
+                            <div class="grid-post"><img src="img/belleza_04 (2).png" alt="Post 10"></div>
+                            <div class="grid-post"><img src="img/belleza_05.png" alt="Post 11"></div>
+                            <div class="grid-post"><img src="img/belleza_06.png" alt="Post 12"></div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- GALERÍA DE POSTS ADICIONAL - 12 CAJAS -->
+                <div class="social-gallery">
+                    <div class="gallery-item" data-full="img/Poster01.png">
+                        <div class="post-media"><img src="img/Poster01.png" alt="Campaña Principal" loading="lazy">
+                        </div>
+                        <div class="post-overlay">
+                            <h3>Campaña Principal</h3>
+                            <p>Feed Instagram</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-full="img/poster02.png">
+                        <div class="post-media"><img src="img/poster02.png" alt="Carousel Parte 2" loading="lazy"></div>
+                        <div class="post-overlay">
+                            <h3>Carousel Parte 2</h3>
+                            <p>Estilo minimal neón</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-full="img/poster_04.png">
+                        <div class="post-media"><img src="img/poster_04.png" alt="Promoción Flash" loading="lazy"></div>
+                        <div class="post-overlay">
+                            <h3>Promoción Flash</h3>
+                            <p>Oferta limitada</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-full="img/poster_05.png">
+                        <div class="post-media"><img src="img/poster_05.png" alt="Historia Destacada" loading="lazy">
+                        </div>
+                        <div class="post-overlay">
+                            <h3>Historia Destacada</h3>
+                            <p>Adaptación vertical</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-full="img/POSTER08.png">
+                        <div class="post-media"><img src="img/POSTER08.png" alt="Post Motivacional" loading="lazy">
+                        </div>
+                        <div class="post-overlay">
+                            <h3>Post Motivacional</h3>
+                            <p>Tipografía + gradiente</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-full="img/poster06.png">
+                        <div class="post-media"><img src="img/poster06.png" alt="Key Visual Temporada" loading="lazy">
+                        </div>
+                        <div class="post-overlay">
+                            <h3>Key Visual Temporada</h3>
+                            <p>Campaña de verano</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-full="img/poster07.png">
+                        <div class="post-media"><img src="img/poster07.png" alt="Reel Cover" loading="lazy"></div>
+                        <div class="post-overlay">
+                            <h3>Reel Cover</h3>
+                            <p>Motion graphics</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-full="iMG/POSTERRRRR_CHICA.png">
+                        <div class="post-media"><img src="img/POSTERRRRR_CHICA.png" alt="Poster" loading="lazy"></div>
+                        <div class="post-overlay">
+                            <h3>Poster Promocional 06</h3>
+                            <p>Diseño para feed</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-full="img/posterexperimental.png">
+                        <div class="post-media"><img src="img/posterexperimental.png" alt="Poster" loading="lazy"></div>
+                        <div class="post-overlay">
+                            <h3>Poster Promocional 07</h3>
+                            <p>Estilo bold</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-full="img/POSTER_PORTADA_MUJER.png">
+                        <div class="post-media"><img src="img/POSTER_PORTADA_MUJER.png" alt="Poster" loading="lazy">
+                        </div>
+                        <div class="post-overlay">
+                            <h3>Poster Promocional 08</h3>
+                            <p>Minimalismo</p>
+                        </div>
+                    </div>
+                     <!--<div class="gallery-item" data-full="img/1.png">
+                        <div class="post-media"><img src="img/1.png" alt="Contenido Diario" loading="lazy"></div>
+                        <div class="post-overlay">
+                            <h3>Contenido Diario</h3>
+                            <p>Serie de stories</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-full="img/3.png">
+                        <div class="post-media"><img src="img/3.png" alt="Lanzamiento Producto" loading="lazy"></div>
+                        <div class="post-overlay">
+                            <h3>Lanzamiento Producto</h3>
+                            <p>Feed + carousel</p>
+                        </div>
+                    </div>-->
+                </div>
+
+                <div style="text-align:center; margin-top: 60px;"><a href="#contacto" class="btn btn-primary">¿Hablamos
+                        de tu próximo proyecto?</a></div>
             </div>
         </section>
 
-        <!-- Sección Videos Verticales - SEPARADA -->
+        <!-- VIDEOS VERTICALES - 6 VIDEOS -->
         <section id="vertical-videos" class="projects">
             <div class="container">
                 <h2 class="section-title">Videos Verticales</h2>
                 <div class="vertical-videos-grid">
-                    <!-- Vertical Video 1 -->
-                    <div
-                        class="project-item vertical-video"
-                        onclick="openYouTubeModal('fvaRlduafRQ', 'VELIA')"
-                    >
-                        <div class="video-thumbnail">
-                            <img
-                                src="img/miniatura_velia.png"
-                                alt="Miniatura Vertical 1"
-                            />
-                            <i class="fas fa-play play-icon"></i>
-                        </div>
+                    <div class="project-item vertical-video" onclick="openYouTubeModal('fvaRlduafRQ','VELIA')">
+                        <div class="video-thumbnail"><img src="img/miniatura_velia.png" alt="VELIA"><i
+                                class="fas fa-play play-icon"></i></div>
                         <div class="project-item-overlay">
                             <h4 class="project-item-title">VELIA</h4>
                             <p class="project-item-desc">Publicidad para marca de ropa</p>
-                            <div class="project-details">
-                                <div class="project-detail-item"><strong>Rol:</strong> Edición y motion graphics</div>
-                                <div class="project-detail-item"><strong>Herramientas:</strong> After Effects, Premiere Pro</div>
-                            </div>
                         </div>
                     </div>
-                    <!-- Vertical Video 2 -->
-                    <div
-                        class="project-item vertical-video"
-                        onclick="openYouTubeModal('J0aCFNKfemU', 'SENTI')"
-                    >
-                        <div class="video-thumbnail">
-                            <img src="img/senti.png" alt="Miniatura Vertical 2" />
-                            <i class="fas fa-play play-icon"></i>
-                        </div>
+                    <div class="project-item vertical-video" onclick="openYouTubeModal('J0aCFNKfemU','SENTI')">
+                        <div class="video-thumbnail"><img src="img/senti.png" alt="SENTI"><i
+                                class="fas fa-play play-icon"></i></div>
                         <div class="project-item-overlay">
                             <h4 class="project-item-title">SENTI</h4>
                             <p class="project-item-desc">Publicidad para aplicación</p>
-                            <div class="project-details">
-                                <div class="project-detail-item"><strong>Rol:</strong> Edición y motion graphics</div>
-                                <div class="project-detail-item"><strong>Herramientas:</strong> After Effects, Premiere Pro</div>
-                            </div>
                         </div>
                     </div>
-                    <!-- Vertical Video 3 -->
-                    <div
-                        class="project-item vertical-video"
-                        onclick="openYouTubeModal('Jv5vRObVYX4', 'PAPA JOHNS')"
-                    >
-                        <div class="video-thumbnail">
-                            <img
-                                src="img/papas_miniatura.png"
-                                alt="Miniatura Vertical 3"
-                            />
-                            <i class="fas fa-play play-icon"></i>
-                        </div>
+                    <div class="project-item vertical-video" onclick="openYouTubeModal('Jv5vRObVYX4','PAPA JOHNS')">
+                        <div class="video-thumbnail"><img src="img/papas_miniatura.png" alt="PAPA JOHNS"><i
+                                class="fas fa-play play-icon"></i></div>
                         <div class="project-item-overlay">
                             <h4 class="project-item-title">PAPA JOHNS</h4>
-                            <p class="project-item-desc">
-                                Publicidad de comida para tiktok
-                            </p>
-                            <div class="project-details">
-                                <div class="project-detail-item"><strong>Rol:</strong> Edición y motion graphics</div>
-                                <div class="project-detail-item"><strong>Herramientas:</strong> After Effects, Premiere Pro</div>
-                            </div>
+                            <p class="project-item-desc">Publicidad para TikTok</p>
                         </div>
                     </div>
-                    <!-- Vertical Video 4 -->
-                    <div
-                        class="project-item vertical-video"
-                        onclick="openYouTubeModal('VLzYS2SqrcE', 'BLENDER')"
-                    >
-                        <div class="video-thumbnail">
-                            <img
-                                src="img/blender_miniatura.png"
-                                alt="Miniatura Vertical 4"
-                            />
-                            <i class="fas fa-play play-icon"></i>
-                        </div>
+                    <div class="project-item vertical-video" onclick="openYouTubeModal('VLzYS2SqrcE','BLENDER')">
+                        <div class="video-thumbnail"><img src="img/blender_miniatura.png" alt="BLENDER"><i
+                                class="fas fa-play play-icon"></i></div>
                         <div class="project-item-overlay">
                             <h4 class="project-item-title">BLENDER</h4>
-                            <p class="project-item-desc">Reel para tiktok</p>
-                            <div class="project-details">
-                                <div class="project-detail-item"><strong>Rol:</strong> Edición y motion graphics</div>
-                                <div class="project-detail-item"><strong>Herramientas:</strong> After Effects, Premiere Pro</div>
-                            </div>
+                            <p class="project-item-desc">Reel para TikTok</p>
                         </div>
                     </div>
-                    <!-- Vertical Video 5 -->
-                    <div
-                        class="project-item vertical-video"
-                        onclick="openYouTubeModal('S5Zh8BbsE0U', 'WINTER SALE')"
-                    >
-                        <div class="video-thumbnail">
-                            <img
-                                src="img/PROMOCION_MINIATURA.png"
-                                alt="Miniatura Vertical 5"
-                            />
-                            <i class="fas fa-play play-icon"></i>
-                        </div>
+                    <div class="project-item vertical-video" onclick="openYouTubeModal('S5Zh8BbsE0U','WINTER SALE')">
+                        <div class="video-thumbnail"><img src="img/PROMOCION_MINIATURA.png" alt="WINTER SALE"><i
+                                class="fas fa-play play-icon"></i></div>
                         <div class="project-item-overlay">
                             <h4 class="project-item-title">WINTER SALE</h4>
-                            <p class="project-item-desc">Reel para tiktok</p>
-                            <div class="project-details">
-                                <div class="project-detail-item"><strong>Rol:</strong> Edición y motion graphics</div>
-                                <div class="project-detail-item"><strong>Herramientas:</strong> After Effects, Premiere Pro</div>
-                            </div>
+                            <p class="project-item-desc">Reel promocional</p>
                         </div>
                     </div>
+                    <!--<div class="project-item vertical-video" onclick="openYouTubeModal('VIDEO_ID_AQUI','NUEVO VIDEO')">
+                        <div class="video-thumbnail"><img src="img/miniatura_velia.png" alt="Nuevo Video"><i
+                                class="fas fa-play play-icon"></i></div>
+                        <div class="project-item-overlay">
+                            <h4 class="project-item-title">NUEVO CONTENIDO</h4>
+                            <p class="project-item-desc">Próximamente</p>
+                        </div>
+                    </div>-->
                 </div>
             </div>
         </section>
 
-        <!-- Sección Videos Horizontales - SEPARADA -->
+        <!-- VIDEOS HORIZONTALES -->
         <section id="horizontal-videos" class="projects">
             <div class="container">
                 <h2 class="section-title">Videos Horizontales</h2>
                 <div class="projects-grid">
-                    <!-- Horizontal Video 1 -->
-                    <div
-                        class="project-item horizontal-video"
-                        onclick="openYouTubeModal('G36Va57oGLs', 'Training Potenciado por IA')"
-                    >
-                        <div class="video-thumbnail">
-                            <img
-                                src="img/MINIATURA_TRADING.png"
-                                alt="Miniatura Horizontal 1"
-                            />
-                            <i class="fas fa-play play-icon"></i>
-                        </div>
+                    <div class="project-item horizontal-video"
+                        onclick="openYouTubeModal('G36Va57oGLs','Training Potenciado por IA')">
+                        <div class="video-thumbnail"><img src="img/MINIATURA_TRADING.png" alt="Training"><i
+                                class="fas fa-play play-icon"></i></div>
                         <div class="project-item-overlay">
                             <h4 class="project-item-title">Training Potenciado por IA</h4>
                             <p class="project-item-desc">Animación motion graphics</p>
-                            <div class="project-details">
-                                <div class="project-detail-item"><strong>Rol:</strong> Edición y motion graphics</div>
-                                <div class="project-detail-item"><strong>Herramientas:</strong> After Effects, Premiere Pro</div>
-                            </div>
                         </div>
                     </div>
-                    <!-- Horizontal Video 2 -->
-                    <div
-                        class="project-item horizontal-video"
-                        onclick="openYouTubeModal('jbfHmHJPQD4', 'MONALISA')"
-                    >
-                        <div class="video-thumbnail">
-                            <img
-                                src="img/mona_lisa_miniatura.jpg"
-                                alt="Miniatura Horizontal 2"
-                            />
-                            <i class="fas fa-play play-icon"></i>
-                        </div>
+                    <div class="project-item horizontal-video" onclick="openYouTubeModal('jbfHmHJPQD4','MONALISA')">
+                        <div class="video-thumbnail"><img src="img/mona_lisa_miniatura.jpg" alt="MONALISA"><i
+                                class="fas fa-play play-icon"></i></div>
                         <div class="project-item-overlay">
                             <h4 class="project-item-title">MONALISA</h4>
                             <p class="project-item-desc">Video lyric</p>
-                            <div class="project-details">
-                                <div class="project-detail-item"><strong>Rol:</strong> Edición y motion graphics</div>
-                                <div class="project-detail-item"><strong>Herramientas:</strong> After Effects, Premiere Pro</div>
-                            </div>
                         </div>
                     </div>
-                    <!-- Horizontal Video 3 -->
-                    <div
-                        class="project-item horizontal-video"
-                        onclick="openYouTubeModal('6KnSX_8mrVw', 'LITTLE CESAR')"
-                    >
-                        <div class="video-thumbnail">
-                            <img
-                                src="img/miniatura_spot_pizza.png"
-                                alt="Miniatura Horizontal 3"
-                            />
-                            <i class="fas fa-play play-icon"></i>
-                        </div>
+                    <div class="project-item horizontal-video" onclick="openYouTubeModal('6KnSX_8mrVw','LITTLE CESAR')">
+                        <div class="video-thumbnail"><img src="img/miniatura_spot_pizza.png" alt="LITTLE CESAR"><i
+                                class="fas fa-play play-icon"></i></div>
                         <div class="project-item-overlay">
                             <h4 class="project-item-title">LITTLE CESAR</h4>
-                            <p class="project-item-desc">Spot publicitario para tv</p>
-                            <div class="project-details">
-                                <div class="project-detail-item"><strong>Rol:</strong> Edición y motion graphics</div>
-                                <div class="project-detail-item"><strong>Herramientas:</strong> After Effects, Premiere Pro</div>
-                                <div class="project-detail-item"><strong>Resultado:</strong> Video con 5,000 reproducciones en TikTok en su primera semana</div>
-                            </div>
+                            <p class="project-item-desc">Spot publicitario</p>
                         </div>
                     </div>
-                    <!-- Horizontal Video 4 -->
-                    <div
-                        class="project-item horizontal-video"
-                        onclick="openYouTubeModal('GP5I9Fd2i80', 'JOSE CUERVO')"
-                    >
-                        <div class="video-thumbnail">
-                            <img
-                                src="img/jose_cuervo_miniatura.png"
-                                alt="Miniatura Horizontal 4"
-                            />
-                            <i class="fas fa-play play-icon"></i>
-                        </div>
+                    <div class="project-item horizontal-video" onclick="openYouTubeModal('GP5I9Fd2i80','JOSE CUERVO')">
+                        <div class="video-thumbnail"><img src="img/jose_cuervo_miniatura.png" alt="JOSE CUERVO"><i
+                                class="fas fa-play play-icon"></i></div>
                         <div class="project-item-overlay">
                             <h4 class="project-item-title">JOSE CUERVO</h4>
                             <p class="project-item-desc">Publicidad</p>
-                            <div class="project-details">
-                                <div class="project-detail-item"><strong>Rol:</strong> Edición y motion graphics</div>
-                                <div class="project-detail-item"><strong>Herramientas:</strong> After Effects, Premiere Pro</div>
-                            </div>
                         </div>
                     </div>
-                    <!-- Horizontal Video 5 -->
-                    <div
-                        class="project-item horizontal-video"
-                        onclick="openYouTubeModal('QeE2Z-jmpIY', 'CONSEGUIR CLIENTES')"
-                    >
-                        <div class="video-thumbnail">
-                            <img
-                                src="img/miniatura_consguir_clientes.png"
-                                alt="Miniatura Horizontal 5"
-                            />
-                            <i class="fas fa-play play-icon"></i>
-                        </div>
+                    <div class="project-item horizontal-video"
+                        onclick="openYouTubeModal('QeE2Z-jmpIY','CONSEGUIR CLIENTES')">
+                        <div class="video-thumbnail"><img src="img/miniatura_consguir_clientes.png"
+                                alt="CONSEGUIR CLIENTES"><i class="fas fa-play play-icon"></i></div>
                         <div class="project-item-overlay">
                             <h4 class="project-item-title">CONSEGUIR CLIENTES</h4>
                             <p class="project-item-desc">Video para YT</p>
-                            <div class="project-details">
-                                <div class="project-detail-item"><strong>Rol:</strong> Edición y motion graphics</div>
-                                <div class="project-detail-item"><strong>Herramientas:</strong> After Effects, Premiere Pro</div>
-                            </div>
                         </div>
                     </div>
-                    <!-- Horizontal Video 6 -->
-                    <div
-                        class="project-item horizontal-video"
-                        onclick="openYouTubeModal('VepF0pW64h4', 'VIDEO CORPORATIVO')"
-                    >
-                        <div class="video-thumbnail">
-                            <img
-                                src="img/mk_miniatura.png"
-                                alt="Miniatura Horizontal 5"
-                            />
-                            <i class="fas fa-play play-icon"></i>
-                        </div>
+                    <div class="project-item horizontal-video"
+                        onclick="openYouTubeModal('VepF0pW64h4','VIDEO CORPORATIVO')">
+                        <div class="video-thumbnail"><img src="img/mk_miniatura.png" alt="VIDEO CORPORATIVO"><i
+                                class="fas fa-play play-icon"></i></div>
                         <div class="project-item-overlay">
                             <h4 class="project-item-title">VIDEO CORPORATIVO</h4>
-                            <p class="project-item-desc">Video para redes sociales</p>
-                            <div class="project-details">
-                                <div class="project-detail-item"><strong>Rol:</strong> Edición y motion graphics</div>
-                                <div class="project-detail-item"><strong>Herramientas:</strong> After Effects, Premiere Pro</div>
-                            </div>
+                            <p class="project-item-desc">Video para redes</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sección Contacto -->
         <section id="contacto" class="contact">
             <div class="container">
                 <h2 class="section-title">Trabajemos Juntos</h2>
                 <div class="contact-content">
                     <div class="contact-info">
                         <h3>Información de Contacto</h3>
-                        <p>
-                            <i class="fas fa-envelope"></i> alexandravargas.studio@gmail.com
-                        </p>
+                        <p><i class="fas fa-envelope"></i> alexandravargas.studio@gmail.com</p>
                         <p><i class="fas fa-map-marker-alt"></i> Lima, Perú</p>
-                        <div class="contact-social">
-                            <a href="https://www.instagram.com/ale.xayumi/" target="_blank"
-                                ><i class="fab fa-instagram"></i
-                            ></a>
-                            <a
+                        <div class="contact-social"><a href="https://www.instagram.com/ale.xayumi/" target="_blank"><i
+                                    class="fab fa-instagram"></i></a><a
                                 href="https://www.linkedin.com/in/alexandra-mirella-vargas-g%C3%B3mez-32388039a/"
-                                target="_blank"
-                                ><i class="fab fa-linkedin"></i
-                            ></a>
-                            <a
-                                href="https://www.youtube.com/channel/UC_qWAfZlGvqGQaLZ1Mxf3ww"
-                                target="_blank"
-                                ><i class="fab fa-youtube"></i
-                            ></a>
-                        </div>
+                                target="_blank"><i class="fab fa-linkedin"></i></a><a
+                                href="https://www.youtube.com/channel/UC_qWAfZlGvqGQaLZ1Mxf3ww" target="_blank"><i
+                                    class="fab fa-youtube"></i></a></div>
                     </div>
                     <form class="contact-form">
-                        <div class="form-group">
-                            <input type="text" placeholder="Nombre" required />
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Email" required />
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Asunto" />
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Mensaje" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            Enviar Mensaje
-                        </button>
+                        <div class="form-group"><input type="text" placeholder="Nombre" required></div>
+                        <div class="form-group"><input type="email" placeholder="Email" required></div>
+                        <div class="form-group"><input type="text" placeholder="Asunto"></div>
+                        <div class="form-group"><textarea placeholder="Mensaje" required></textarea></div><button
+                            type="submit" class="btn btn-primary">Enviar Mensaje</button>
                     </form>
                 </div>
             </div>
@@ -2350,448 +1633,67 @@
                 </div>
                 <div class="footer-social">
                     <h4>Sígueme</h4>
-                    <div class="social-icons">
-                        <a href="https://www.instagram.com/ale.xayumi/" target="_blank"
-                            ><i class="fab fa-instagram"></i
-                        ></a>
-                        <a
+                    <div class="social-icons"><a href="https://www.instagram.com/ale.xayumi/" target="_blank"><i
+                                class="fab fa-instagram"></i></a><a
                             href="https://www.linkedin.com/in/alexandra-mirella-vargas-g%C3%B3mez-32388039a/"
-                            target="_blank"
-                            ><i class="fab fa-linkedin"></i
-                        ></a>
-                        <a
-                            href="https://www.youtube.com/channel/UC_qWAfZlGvqGQaLZ1Mxf3ww"
-                            target="_blank"
-                            ><i class="fab fa-youtube"></i
-                        ></a>
-                    </div>
+                            target="_blank"><i class="fab fa-linkedin"></i></a><a
+                            href="https://www.youtube.com/channel/UC_qWAfZlGvqGQaLZ1Mxf3ww" target="_blank"><i
+                                class="fab fa-youtube"></i></a></div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Alexandra Vargas. Todos los derechos reservados.</p>
+                <p>© 2026 Alexandra Vargas. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Preloader
-        window.addEventListener("load", function () {
-            const preloader = document.querySelector(".preloader");
-            setTimeout(function () {
-                preloader.classList.add("fade-out");
-                setTimeout(function () {
-                    preloader.style.display = "none";
-                }, 500);
-            }, 1500); // 1.5 segundos de carga simulada
-        });
+        window.addEventListener("load", () => { const p = document.querySelector(".preloader"); setTimeout(() => { p.classList.add("fade-out"); setTimeout(() => { p.style.display = "none" }, 500) }, 1000) });
+        window.addEventListener("scroll", () => { document.querySelector(".header").classList.toggle("scrolled", window.scrollY > 100) });
+        document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener("click", function (e) { e.preventDefault(); const t = document.querySelector(this.getAttribute("href")); if (t) window.scrollTo({ top: t.offsetTop - 80, behavior: "smooth" }) }) });
 
-        // Efecto de scroll para el header
-        window.addEventListener("scroll", function () {
-            const header = document.querySelector(".header");
-            if (window.scrollY > 100) {
-                header.classList.add("scrolled");
-            } else {
-                header.classList.remove("scrolled");
+        function animateSkills() { const items = document.querySelectorAll(".skill-item"); const section = document.querySelector("#skills"); function check() { if (section.getBoundingClientRect().top < window.innerHeight - 100) { items.forEach((item, i) => { setTimeout(() => { const level = item.querySelector(".skill-level"); const percentSpan = item.querySelector(".skill-percent"); const target = parseInt(level.getAttribute("data-width")); let current = 0; const interval = setInterval(() => { if (current >= target) { clearInterval(interval) } else { current += Math.ceil(target / 30); if (current > target) current = target; level.style.width = current + "%"; percentSpan.textContent = current + "%" } }, 30) }, i * 100) }); window.removeEventListener("scroll", check) } } window.addEventListener("scroll", check); check() } animateSkills();
+
+        const container = document.querySelector(".floating-elements"); for (let i = 0; i < 12; i++) { const e = document.createElement("div"); e.classList.add("floating-element"); const s = Math.random() * 150 + 50; e.style.width = s + "px"; e.style.height = s + "px"; e.style.top = Math.random() * 100 + "%"; e.style.left = Math.random() * 100 + "%"; e.style.animationDuration = Math.random() * 20 + 15 + "s"; container.appendChild(e) }
+        const wordsContainer = document.getElementById("floatingWords"); const words = ["CREATIVIDAD", "DISEÑO", "ANIMACIÓN", "MOTION", "VIDEO", "CONTENIDO"]; for (let i = 0; i < 15; i++) { const w = document.createElement("div"); w.classList.add("floating-word"); w.textContent = words[Math.floor(Math.random() * words.length)]; w.style.left = Math.random() * 100 + "%"; w.style.fontSize = (Math.random() * 1 + 1) + "rem"; wordsContainer.appendChild(w) }
+
+        particlesJS("particles-js", { particles: { number: { value: 100 }, color: { value: ["#41EAD4", "#FCFF12", "#FF206E"] }, shape: { type: "circle" }, opacity: { value: 0.6, random: true }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 1.2 } }, interactivity: { events: { onhover: { enable: true, mode: "grab" } } } });
+
+        window.openYouTubeModal = (id, title) => { const modal = document.getElementById("videoModal"); const iframe = document.getElementById("youtubeVideo"); iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`; modal.style.display = "flex"; document.body.style.overflow = "hidden" };
+        document.querySelector(".close-modal").addEventListener("click", () => { const modal = document.getElementById("videoModal"); modal.style.display = "none"; document.getElementById("youtubeVideo").src = ""; document.body.style.overflow = "auto" });
+        window.addEventListener("click", e => { const modal = document.getElementById("videoModal"); if (e.target === modal) { modal.style.display = "none"; document.getElementById("youtubeVideo").src = ""; document.body.style.overflow = "auto" } });
+
+        window.openPdfModal = (url, title) => { const modal = document.getElementById("pdfModal"); document.getElementById("pdfViewer").src = url; document.getElementById("pdfModalTitle").innerText = title; document.getElementById("pdfDownloadLink").href = url; modal.style.display = "flex"; document.body.style.overflow = "hidden" };
+        document.querySelector(".pdf-modal-close").addEventListener("click", () => { document.getElementById("pdfModal").style.display = "none"; document.body.style.overflow = "auto" });
+        window.addEventListener("click", e => { const modal = document.getElementById("pdfModal"); if (e.target === modal) { modal.style.display = "none"; document.body.style.overflow = "auto" } });
+
+        const galleryItems = document.querySelectorAll('.social-gallery .gallery-item');
+        const lightbox = document.getElementById('imageLightbox');
+        const lightboxImg = document.getElementById('lightboxImage');
+        const closeLightboxBtn = document.querySelector('.lightbox-close');
+        if (lightbox && lightboxImg) {
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    const src = this.getAttribute('data-full');
+                    if (src) {
+                        lightboxImg.src = src;
+                        lightbox.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            function closeLightbox() {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
             }
-        });
-
-        // Smooth scrolling para los enlaces de navegación
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-            anchor.addEventListener("click", function (e) {
-                e.preventDefault();
-
-                const targetId = this.getAttribute("href");
-                const targetElement = document.querySelector(targetId);
-
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: "smooth",
-                    });
-
-                    // Actualizar enlace activo
-                    document.querySelectorAll(".nav-link").forEach((link) => {
-                        link.classList.remove("active");
-                    });
-                    this.classList.add("active");
-                }
-            });
-        });
-
-        // Animación de habilidades al hacer scroll
-        function animateSkillsOnScroll() {
-            const skillItems = document.querySelectorAll(".skill-item");
-            const skillSection = document.querySelector(".skills");
-
-            function checkVisibility() {
-                const sectionTop = skillSection.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-
-                if (sectionTop < windowHeight - 100) {
-                    skillItems.forEach((item, index) => {
-                        setTimeout(() => {
-                            item.style.opacity = "1";
-                            item.style.transform = "translateY(0)";
-
-                            // Animar las barras de habilidades
-                            const skillLevel = item.querySelector(".skill-level");
-                            const skillPercent = item.querySelector(".skill-percent");
-                            const width = skillLevel.getAttribute("data-width");
-                            let currentPercent = 0;
-
-                            skillLevel.style.width = "0";
-
-                            const animationInterval = setInterval(() => {
-                                if (currentPercent >= parseInt(width)) {
-                                    clearInterval(animationInterval);
-                                } else {
-                                    currentPercent += 1;
-                                    skillLevel.style.width = currentPercent + "%";
-                                    skillPercent.textContent = currentPercent + "%";
-                                }
-                            }, 20);
-                        }, index * 150);
-                    });
-                    window.removeEventListener("scroll", checkVisibility);
-                }
-            }
-
-            // Inicializar opacidad y posición
-            skillItems.forEach((item) => {
-                item.style.opacity = "0";
-                item.style.transform = "translateY(20px)";
-                item.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-            });
-
-            window.addEventListener("scroll", checkVisibility);
-            checkVisibility(); // Verificar al cargar la página
+            closeLightboxBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
         }
 
-        // Crear elementos flotantes más elaborados
-        function createFloatingElements() {
-            const container = document.querySelector(".floating-elements");
-            const colors = [
-                "var(--turquesa)",
-                "var(--limon)",
-                "var(--rosa-electrico)",
-            ];
-            const shapes = ["circle", "blob", "triangle", "square"];
-
-            for (let i = 0; i < 15; i++) {
-                const element = document.createElement("div");
-                element.classList.add("floating-element");
-
-                const size = Math.random() * 200 + 50;
-                const duration = Math.random() * 25 + 15;
-                const delay = Math.random() * 15;
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                const shape = shapes[Math.floor(Math.random() * shapes.length)];
-
-                element.style.width = `${size}px`;
-                element.style.height = `${size}px`;
-                element.style.background = color;
-                element.style.top = `${Math.random() * 100}%`;
-                element.style.left = `${Math.random() * 100}%`;
-                element.style.animationDuration = `${duration}s`;
-                element.style.animationDelay = `-${delay}s`;
-                element.style.opacity = `${Math.random() * 0.3 + 0.1}`;
-
-                // Formas diferentes
-                if (shape === "blob") {
-                    element.style.borderRadius = "50% 30% 70% 40% / 60% 40% 60% 40%";
-                } else if (shape === "triangle") {
-                    element.style.clipPath = "polygon(50% 0%, 0% 100%, 100% 100%)";
-                    element.style.borderRadius = "0";
-                } else if (shape === "square") {
-                    element.style.borderRadius = "10px";
-                } else {
-                    element.style.borderRadius = "50%";
-                }
-
-                // Rotación aleatoria
-                element.style.transform = `rotate(${Math.random() * 360}deg)`;
-
-                container.appendChild(element);
-            }
-        }
-
-        // Crear palabras flotantes en el hero
-        function createFloatingWords() {
-            const container = document.getElementById("floatingWords");
-            const words = [
-                "CREATIVIDAD", "DISEÑO", "ANIMACIÓN", "MOTION", "VIDEO", 
-                "CONTENIDO", "BRANDING", "ESTRATEGIA", "INNOVACIÓN", "STORYTELLING"
-            ];
-            const colors = ["var(--turquesa)", "var(--limon)", "var(--rosa-electrico)"];
-
-            for (let i = 0; i < 20; i++) {
-                const word = document.createElement("div");
-                word.classList.add("floating-word");
-                
-                const randomWord = words[Math.floor(Math.random() * words.length)];
-                const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                const duration = Math.random() * 30 + 20;
-                const delay = Math.random() * 20;
-                const left = Math.random() * 100;
-                
-                word.textContent = randomWord;
-                word.style.color = randomColor;
-                word.style.animationDuration = `${duration}s`;
-                word.style.animationDelay = `-${delay}s`;
-                word.style.left = `${left}%`;
-                word.style.fontSize = `${Math.random() * 1 + 1}rem`;
-                
-                container.appendChild(word);
-            }
-        }
-
-        // Inicializar partículas más complejas - SIN LÍNEAS
-        function initParticles() {
-            particlesJS("particles-js", {
-                particles: {
-                    number: {
-                        value: 120,
-                        density: {
-                            enable: true,
-                            value_area: 1000,
-                        },
-                    },
-                    color: {
-                        value: ["#41EAD4", "#FCFF12", "#FF206E"],
-                    },
-                    shape: {
-                        type: ["circle", "triangle", "polygon"],
-                        stroke: {
-                            width: 0,
-                            color: "#000000",
-                        },
-                        polygon: {
-                            nb_sides: 5,
-                        },
-                    },
-                    opacity: {
-                        value: 0.7,
-                        random: true,
-                        anim: {
-                            enable: true,
-                            speed: 1,
-                            opacity_min: 0.1,
-                            sync: false,
-                        },
-                    },
-                    size: {
-                        value: 4,
-                        random: true,
-                        anim: {
-                            enable: true,
-                            speed: 2,
-                            size_min: 0.1,
-                            sync: false,
-                        },
-                    },
-                    line_linked: {
-                        enable: false, // DESACTIVAR LÍNEAS
-                        distance: 150,
-                        color: "#41EAD4",
-                        opacity: 0.3,
-                        width: 1,
-                    },
-                    move: {
-                        enable: true,
-                        speed: 1.5,
-                        direction: "none",
-                        random: true,
-                        straight: false,
-                        out_mode: "out",
-                        bounce: false,
-                        attract: {
-                            enable: true,
-                            rotateX: 600,
-                            rotateY: 1200,
-                        },
-                    },
-                },
-                interactivity: {
-                    detect_on: "canvas",
-                    events: {
-                        onhover: {
-                            enable: true,
-                            mode: "grab",
-                        },
-                        onclick: {
-                            enable: true,
-                            mode: "push",
-                        },
-                        resize: true,
-                    },
-                    modes: {
-                        grab: {
-                            distance: 140,
-                            line_linked: {
-                                opacity: 0.8,
-                            },
-                        },
-                        push: {
-                            particles_nb: 4,
-                        },
-                    },
-                },
-                retina_detect: true,
-            });
-        }
-
-        // Video Modal para YouTube
-        function setupVideoModal() {
-            const modal = document.getElementById("videoModal");
-            const youtubeIframe = document.getElementById("youtubeVideo");
-            const closeBtn = document.querySelector(".close-modal");
-
-            // Cerrar modal
-            closeBtn.addEventListener("click", function () {
-                modal.style.display = "none";
-                document.body.style.overflow = "auto";
-                youtubeIframe.src = ""; // Detener el video
-            });
-
-            // Cerrar al hacer click fuera del video
-            window.addEventListener("click", function (e) {
-                if (e.target === modal) {
-                    modal.style.display = "none";
-                    document.body.style.overflow = "auto";
-                    youtubeIframe.src = ""; // Detener el video
-                }
-            });
-
-            // Cerrar con tecla ESC
-            document.addEventListener("keydown", function (e) {
-                if (e.key === "Escape" && modal.style.display === "flex") {
-                    modal.style.display = "none";
-                    document.body.style.overflow = "auto";
-                    youtubeIframe.src = ""; // Detener el video
-                }
-            });
-        }
-
-        // Función para abrir el modal de video de YouTube
-        function openYouTubeModal(videoId, title) {
-            const modal = document.getElementById("videoModal");
-            const youtubeIframe = document.getElementById("youtubeVideo");
-
-            // Configurar la URL del iframe de YouTube con autoplay
-            youtubeIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-
-            document
-                .querySelector(".modal-content")
-                .setAttribute("data-title", title);
-            modal.style.display = "flex";
-            document.body.style.overflow = "hidden";
-        }
-
-        // Lightbox para imágenes
-        function setupImageLightbox() {
-            const lightbox = document.getElementById("imageLightbox");
-            const lightboxImage = document.getElementById("lightboxImage");
-            const lightboxCaption = document.getElementById("lightboxCaption");
-            const closeBtn = document.querySelector(".lightbox-close");
-
-            // Cerrar lightbox
-            closeBtn.addEventListener("click", function () {
-                lightbox.style.display = "none";
-                document.body.style.overflow = "auto";
-            });
-
-            // Cerrar al hacer click fuera de la imagen
-            lightbox.addEventListener("click", function (e) {
-                if (e.target === lightbox) {
-                    lightbox.style.display = "none";
-                    document.body.style.overflow = "auto";
-                }
-            });
-
-            // Cerrar con tecla ESC
-            document.addEventListener("keydown", function (e) {
-                if (e.key === "Escape" && lightbox.style.display === "flex") {
-                    lightbox.style.display = "none";
-                    document.body.style.overflow = "auto";
-                }
-            });
-        }
-
-        // Función para abrir el lightbox de imágenes
-        function openImageLightbox(imageSrc, title, description) {
-            const lightbox = document.getElementById("imageLightbox");
-            const lightboxImage = document.getElementById("lightboxImage");
-            const lightboxCaption = document.getElementById("lightboxCaption");
-
-            lightboxImage.src = imageSrc;
-            lightboxImage.alt = title;
-            lightboxCaption.textContent = `${title} - ${description}`;
-            lightbox.style.display = "flex";
-            document.body.style.overflow = "hidden";
-        }
-
-        // PDF Viewer Modal
-        function setupPdfModal() {
-            const modal = document.getElementById("pdfModal");
-            const closeBtn = document.querySelector(".pdf-modal-close");
-
-            // Cerrar modal
-            closeBtn.addEventListener("click", function () {
-                modal.style.display = "none";
-                document.body.style.overflow = "auto";
-            });
-
-            // Cerrar al hacer click fuera del modal
-            window.addEventListener("click", function (e) {
-                if (e.target === modal) {
-                    modal.style.display = "none";
-                    document.body.style.overflow = "auto";
-                }
-            });
-
-            // Cerrar con tecla ESC
-            document.addEventListener("keydown", function (e) {
-                if (e.key === "Escape" && modal.style.display === "flex") {
-                    modal.style.display = "none";
-                    document.body.style.overflow = "auto";
-                }
-            });
-        }
-
-        // Función para abrir el modal de PDF
-        function openPdfModal(pdfUrl, title) {
-            const modal = document.getElementById("pdfModal");
-            const pdfViewer = document.getElementById("pdfViewer");
-            const pdfTitle = document.getElementById("pdfModalTitle");
-            const downloadLink = document.getElementById("pdfDownloadLink");
-
-            // Configurar el visor de PDF
-            pdfViewer.src = pdfUrl;
-            pdfTitle.textContent = title;
-            downloadLink.href = pdfUrl;
-            downloadLink.download = pdfUrl.split('/').pop();
-
-            modal.style.display = "flex";
-            document.body.style.overflow = "hidden";
-        }
-
-        // Llamar a las funciones de inicialización
-        document.addEventListener("DOMContentLoaded", function () {
-            createFloatingElements();
-            createFloatingWords();
-            initParticles();
-            animateSkillsOnScroll();
-            setupVideoModal();
-            setupImageLightbox();
-            setupPdfModal();
-
-            // Actualizar enlace activo al cargar la página
-            const currentHash = window.location.hash || "#inicio";
-            document
-                .querySelector(`.nav-link[href="${currentHash}"]`)
-                .classList.add("active");
-        });
+        const hash = window.location.hash || "#inicio"; const active = document.querySelector(`.nav-link[href="${hash}"]`); if (active) active.classList.add("active");
     </script>
 </body>
+
 </html>
